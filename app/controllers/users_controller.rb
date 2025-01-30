@@ -22,6 +22,12 @@ class UsersController < ApplicationController
   end
 
 
+  def destroy
+    user = User.find(params[:id]) # 1件取得
+    user.destroy # 削除
+    redirect_to '/users/sign_up'
+  end
+
 
   private
 
