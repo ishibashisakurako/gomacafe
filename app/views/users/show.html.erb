@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-3">
+
+
+
+      <table class="table">
+      <%= image_tag @user.get_profile_image(100,100) %>
+        <h3><%= @user.name %></h3>
+
+        <%= @user.introduction %>
+
+          <% if @user == current_user %>
+            <%= link_to "編集", edit_user_path(@user) %>
+          
+          <% end %>
+      </table>
+    </div>
+ 
+
+
+    <div class="col-lg-9">
+    <p></p>
+    <h2>あなたのrecipe一覧</h2>
+      <table class="table">
+
+        <% @posts.each do |post| %>
+
+          <tr>
+            <td>
+              <p><%= post.title %></p>
+              <% if post.status == 'publish' %>
+                <div class="badge badge-primary">
+                  <%= post.status_i18n %>
+                </div>
+              <% elsif post.status == 'secret'%>
+                <div class="badge badge-success">
+                  <%= post.status_i18n %>
+                </div>
+              <% else %>
+                <div class="badge badge-secondary">
+                  <%= post.status_i18n %>
+                </div>
+              <% end %>
+            </td>
+
+            <td><%= link_to post_path(post.id) do %>
+              <%= image_tag post.get_image, style: "width:200px; height:200px;" %>
+              <% end %>
+            </td>
+
+            <td>
+              <%= post.introduction %>
+            </td>
+
+          </tr>
+
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+

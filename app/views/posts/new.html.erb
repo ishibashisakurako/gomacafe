@@ -1,0 +1,49 @@
+ <div class="container">
+    <div class="row">
+      <div class="mx-auto">
+
+        <div>
+          <%= flash[:notice] %>
+        </div>
+
+<h1>New Recipe</h1>
+
+
+<% if @post.errors.any? %>
+  <%= @post.errors.count %>件のエラーが発生しました
+  <ul>
+    <%= @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_with model: @post, url: '/posts', method: :post do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title, size: "80x20" %>
+
+  <h4>写真</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+
+  <h4>レシピ概要</h4>
+  <%= f.text_area :introduction, size: "80×20" %>
+
+  <h4>材料</h4>
+  <%= f.text_area :material, size: "80x20" %>
+
+  <h4>作り方</h4>
+  <%= f.text_area :recipe, size: "80x20" %>
+
+  <h4>ポイント</h4>
+  <%= f.text_area :point, size: "80x10" %>
+
+  <%= f.select :status, Post.statuses.keys.map { |k| [I18n.t("enums.post.status.#{k}"), k] } %>
+
+  <%= f.submit '投稿', class: "btn btn-success" %>
+
+<% end %>
+
+</div>
+</div>
+</div>

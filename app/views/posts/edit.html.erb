@@ -1,0 +1,40 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+
+      <h1>レシピ編集</h1>
+
+      <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
+
+
+        <h4>title</h4>
+        <%= f.text_field :title, class: "form-control" %>
+
+
+        <h4>画像</h4>
+        <%= f.file_field :image, accept: "image/*" %>
+
+        <h4>レシピ概要</h4>
+        <%= f.text_area :introduction, size: "80×10" %>
+        
+        <h4>材料</h4>
+        <%= f.text_area :material, rows: 5, class: "form-control" %>
+
+        <h4>作り方</h4>
+        <%= f.text_area :recipe, size: "80x20", rows: 5 %>
+
+        <h4>ポイント</h4>
+        <%= f.text_area :point, size: "80x10", rows: 5 %>
+
+        <%= f.select :status, Post.statuses.keys.map { |k| [I18n.t("enums.post.status.#{k}"), k] } %>
+
+
+        <%= f.submit '保存', class: "btn btn-success" %>
+        
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
