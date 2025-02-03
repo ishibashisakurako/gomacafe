@@ -162,6 +162,9 @@ GEM
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    pry-byebug (3.8.0)
+      byebug (~> 11.0)
+      pry (~> 0.10)
     pry-rails (0.3.11)
       pry (>= 0.13.0)
     public_suffix (6.0.1)
@@ -295,6 +298,7 @@ DEPENDENCIES
   net-imap
   net-pop
   net-smtp
+  pry-byebug
   pry-rails
   puma (~> 3.11)
   rails (~> 6.1.7, >= 6.1.7.10)
