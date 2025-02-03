@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="mx-auto">
+
+  
 
 
     <div>
       <%= flash[:notice] %>
     </div>
 
+<div class="col-md-4">
 <h1><%= @post.title %></h1>
 
 
@@ -15,6 +17,10 @@
 <% else %>
   <%= image_tag 'noimage', style: "width:300px; height:300px;" %>
 <% end %>
+
+</div>
+
+<div class="col-md-8">
 
 <h2>レシピ概要</h2>
 <%= simple_format @post.introduction %>
@@ -28,9 +34,11 @@
 <h2>ポイント</h2>
 <%= simple_format @post.point %>
 
+
+
 <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-success" %>
 <%= link_to "削除", post_path(@post.id), class: "btn btn-danger", method: :delete, "deta-confirm" => "本当に削除しますか？" %>
-
+</div>
 
 <div>
   <p>コメント件数:<%= @post.post_comments.count %></p>
@@ -65,6 +73,6 @@
   <% end %>
 </div>
 
-    </div>
+
   </div>
 </div> 
