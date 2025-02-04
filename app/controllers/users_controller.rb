@@ -11,14 +11,24 @@ class UsersController < ApplicationController
 
 
   def edit
+    user = User.find(params[:id])
+  unless user.id == current_user.id
+    redirect_to user_path(current_user)
+  end
     @user = User.find(params[:id])
   end
 
 
   def update
     @user = User.find(params[:id]) #ユーザーの取得
-    @user.update(user_params) #ユーザーのアップデート
-    redirect_to user_path(@user.id) #ユーザー詳細へのパス
+    unless @user.id == current_user.id
+     redirect_to user_path(current_user)
+    end
+    if @user.update(user_params) #ユーザーのアップデート
+      redirect_to user_path(@user.id) #ユーザー詳細へのパス
+    else
+      render :edit
+    end
   end
 
 

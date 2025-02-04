@@ -24,26 +24,39 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
     @post_comment = PostComment.new #コメント投稿できるよ
   end
 
 
   def edit
     @post = Post.find(params[:id])
+    unless @post.id == current_user.id
+      redirect_to posts_path
+    end
   end
 
   
   def update
     post = Post.find(params[:id])
-    post.update(post_params)
+    unless @user.id == current_user
+      redirect_to post_path
+    end
+
+    if post.update(post_params)
     redirect_to post_path(post.id)
+    else
+      flash[:notice] = "編集できませんでした"
+      @post = Post.find(params[:id])
+      render :edit
+    end
   end
 
 
   def destroy
     post = Post.find(params[:id]) # 1件取得
     post.destroy # 削除
-    redirect_to '/posts' #詳細へ飛ぶ
+    redirect_to user_path #マイページへ飛ぶ
   end
 
 

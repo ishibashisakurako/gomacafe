@@ -1,5 +1,15 @@
 
-  <div class="row">
+<% if @post.errors.any? %>
+  <%= @post.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<div class="row">
 
   
 
@@ -12,6 +22,10 @@
 <% else %>
   <%= image_tag 'noimage', style: "width:300px; height:300px;" %>
 <% end %>
+
+
+<p><%= link_to @user.name, user_path(@user.id) %></p>
+
 
 </div>
 
@@ -32,7 +46,7 @@
 
 
 <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-success" %>
-<%= link_to "削除", post_path(@post.id), class: "btn btn-danger", method: :delete, "deta-confirm" => "本当に削除しますか？" %>
+<%= link_to "削除", post_path(@post.id), class: "btn btn-danger", method: :delete, data: {confirm: "投稿を削除しますか？"} %>
 </div>
 
 <div>
