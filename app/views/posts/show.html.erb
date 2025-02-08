@@ -8,45 +8,44 @@
   </ul>
 <% end %>
 
-
-<div class="row">
-
-  
-
-<div class="col-md-4">
 <h1><%= @post.title %></h1>
 
+<hr>
 
-<% if @post.image.attached? %>
-  <%= image_tag @post.image, style: "width:300px; height:300px;" %>
-<% else %>
-  <%= image_tag 'noimage', style: "width:300px; height:300px;" %>
-<% end %>
+<div class="row">
+  <div class="col-md-4">
+    <% if @post.image.attached? %>
+      <%= image_tag @post.image, style: "width:300px; height:300px;" %>
+    <% else %>
+      <%= image_tag 'noimage', style: "width:300px; height:300px;" %>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <p><%= link_to @user.name, user_path(@user.id) %></p>
+    <h2>レシピ概要</h2>
+    <%= simple_format @post.introduction %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <h2>材料</h2>
+    <%= simple_format @post.material %>
+  </div>
+  <div class="col-md-8">
+    <h2>作り方</h2>
+    <%= simple_format @post.recipe %>
 
-
-<p><%= link_to @user.name, user_path(@user.id) %></p>
-
-
+    <h2>ポイント</h2>
+    <%= simple_format @post.point %>
+  </div>
 </div>
 
-<div class="col-md-8">
-
-<h2>レシピ概要</h2>
-<%= simple_format @post.introduction %>
-
-<h2>材料</h2>
-<%= simple_format @post.material %>
-
-<h2>作り方</h2>
-<%= simple_format @post.recipe %>
-
-<h2>ポイント</h2>
-<%= simple_format @post.point %>
-
-
-
-<%= link_to "編集", edit_post_path(@post.id), class: "btn btn-success" %>
-<%= link_to "削除", post_path(@post.id), class: "btn btn-danger", method: :delete, data: {confirm: "投稿を削除しますか？"} %>
+<% if @user == current_user %>
+  <div class="d-flex justify-content-end">
+    <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-success mr-2" %>
+    <%= link_to "削除", post_path(@post.id), class: "btn btn-danger", method: :delete, data: {confirm: "投稿を削除しますか？"} %>
+  </div>
+<% end %>
 </div>
 
 <div>
@@ -56,7 +55,7 @@
     <%= post_comment.user.name %>
     <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
     <% if post_comment.user == current_user %>
-      <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+      <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, data: {confirm: "コメントを削除しますか？"} %>
     <% end %>
   <% end %>
 

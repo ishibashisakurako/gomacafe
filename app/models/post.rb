@@ -29,4 +29,13 @@ class Post < ApplicationRecord
       favorites.exists?(user_id: user.id)
     end
 
+    def self.looks(word)
+      if word
+        Post.where(['title LIKE ?', "%#{word}%"])
+
+      else
+        @post = Post.all
+      end
+    end
+
 end

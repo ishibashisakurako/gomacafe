@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def new
     @post = Post.new
   end
-
 
   def create #投稿したデータを保存
     @post = Post.new(post_params) #新規投稿できるよ
@@ -30,33 +32,33 @@ class PostsController < ApplicationController
 
 
   def edit
-    @post = Post.find(params[:id])
-    unless @post.id == current_user.id
-      redirect_to posts_path
-    end
+    #@post = Post.find(params[:id])
+    #unless @post.user == current_user
+    #  redirect_to posts_path
+    #end
   end
 
   
   def update
-    post = Post.find(params[:id])
-    unless @user.id == current_user
-      redirect_to post_path
-    end
+    #post = Post.find(params[:id])
+    #unless @usee == current_user.id
+    #  redirect_to post_path
+    #end
 
-    if post.update(post_params)
-    redirect_to post_path(post.id)
+    if @post.update(post_params)
+      redirect_to post_path(@post)
     else
       flash[:notice] = "編集できませんでした"
-      @post = Post.find(params[:id])
+      #@post = Post.find(params[:id])
       render :edit
     end
   end
 
 
   def destroy
-    post = Post.find(params[:id]) # 1件取得
-    post.destroy # 削除
-    redirect_to user_path #マイページへ飛ぶ
+    #post = Post.find(params[:id]) # 1件取得
+    @post.destroy # 削除
+    redirect_to user_path(current_user) #マイページへ飛ぶ
   end
 
 
@@ -65,5 +67,10 @@ class PostsController < ApplicationController
     params.require(:post).permit(:status, :title, :image, :introduction, :material, :recipe, :point)
   end
 
-
+  def correct_user
+    @post = current_user.posts.find_by(id: params[:id])
+    unless @post
+      redirect_to root_path
+    end
+  end
 end

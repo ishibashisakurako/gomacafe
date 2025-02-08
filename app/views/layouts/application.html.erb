@@ -19,10 +19,12 @@
     <header>
       <%= render "layouts/navigation" %>
     </header>
-
     <main class="container">
+          <%= render "layouts/search" %>
+
       <%= render "layouts/flash_messages" %>
-      <%= yield %> 
+      <%= yield %>
+      <%#= debug params %>
     </main>
   </body>
 </html>
