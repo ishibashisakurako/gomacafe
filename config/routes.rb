@@ -6,17 +6,22 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    root to: 'users#index'
+    root to: 'homes#top'
     resources :users, only: [:index, :show, :destroy]
+    resources :comments, only: [:index, :destroy]
   end
 
   devise_for :users
   root to: 'homes#top'
 
   resources :posts do
-    resources :favorite, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
   end
-  resources :users, only: [:index, :show, :edit, :update, :destroy]
-get "search" => "searches#search"
-end
+
+  resources :users, only: [:index, :show, :edit, :update, :destroy] do
+  get 'favorite', to: 'users#favorite'
+  end
+
+  get "search" => "searches#search"
+  end

@@ -1,0 +1,22 @@
+<hr>
+<h5><b><div class="text-center">
+ <%= @user.name %>さんのお気に入りレシピ一覧
+ </b></h5>
+ </div>
+<hr>
+
+
+<div class="row">
+  <% @favorite_posts.each do |post| %>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <%= link_to post_path(post) do %>
+        <%= image_tag post.get_image, style: "width:100%;" %>
+        <% end %>
+<b><%= post.title %></b>
+<p><%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %>
+            <%= post.user.name %>さんのレシピ</p>
+        <%= link_to "削除", post_favorites_path(post), method: :delete, class: "btn btn-secondary" %>
+
+      </div>
+    <% end %>
+  </div>

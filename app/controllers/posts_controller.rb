@@ -61,10 +61,15 @@ class PostsController < ApplicationController
     redirect_to user_path(current_user) #マイページへ飛ぶ
   end
 
+ 
+  def tag_list
+    @genres = Genre.all
+  end
+
 
   private
   def post_params
-    params.require(:post).permit(:status, :title, :image, :introduction, :material, :recipe, :point)
+    params.require(:post).permit(:status, :title, :image, :amount, :introduction, :material, :recipe, :point, :genre_id)
   end
 
   def correct_user

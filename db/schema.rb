@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_02_06_121929) do
+ActiveRecord::Schema.define(version: 2025_02_17_044816) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(version: 2025_02_06_121929) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "others", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "post_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
@@ -67,18 +79,8 @@ ActiveRecord::Schema.define(version: 2025_02_06_121929) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "material"
-    t.text "recipe"
-    t.text "point"
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "status", default: 0, null: false
-    t.string "introduction"
-    t.index ["user_id"], name: "index_posts_on_user_id"
-  end
+# Could not dump table "posts" because of following StandardError
+#   Unknown type '' for column 'genre'
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

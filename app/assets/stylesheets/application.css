@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+ .favorite-btn {
+  color: #e54747;
+}
+
+.nofavorite-btn {
+  color: #808080;
+}
+

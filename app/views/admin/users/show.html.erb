@@ -1,0 +1,18 @@
+<hr>
+
+<div class="text-center">
+    <%= image_tag @user.get_profile_image(200,200) %>
+
+<p><b>ユーザー名</b>:
+  <%= @user.name %></p>
+
+<p><b>メールアドレス</b>:
+ <%= @user.email %></p>
+
+<p><b>投稿件数</b>:
+ <%= @post.count %>件</p>
+
+<%= link_to "ユーザーを削除", edit_user_path(@user), class: "btn btn-danger", method: :delete, data: {confilm: "本当に削除しますか？"} %>
+<%= link_to "一覧へ戻る", admin_users_path, class: "btn btn-success" %>
+
+</div>

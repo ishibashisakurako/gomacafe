@@ -1,22 +1,22 @@
+<hr>
 
-<h1>全ユーザー一覧</h1>
+<h5><b><div class="text-center">全ユーザー一覧</div></b></h5>
 
 <table class="table">
 
-<tr>
-  <th>ユーザー名</th>
-  <th>メールアドレス</th>
-</tr>
- <% @users.each do |user| %>
-<tr>
+  <tr>
+    <th>プロフィール画像</th>
+    <th>ユーザー名</th>
+    <th>メールアドレス</th>
+  </tr>
 
-  <td><%= link_to admin_user_path(user) do %>
-  <%= user.name %>
-  <% end %>
-  </td>
-  <td><%= user.email %></td>
-  <td><%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %> </td>
-  <% end %>
-</tr>
+
+    <% @users.each do |user| %>
+  <tr>
+    <td><%= image_tag user.get_profile_image(100,100) %></td>
+    <td><%= link_to user.name, admin_user_path(user) %></td>
+    <td><%= user.email %></td>
+  </tr>
+    <% end %>
 
 </table>

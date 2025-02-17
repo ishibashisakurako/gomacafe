@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   has_many :favorites, dependent: :destroy
-
   validates :name, presence: true
 
 
@@ -29,8 +28,10 @@ class User < ApplicationRecord
       User.where(['name LIKE ?', "%#{word}%"])
     
     else
-      @user = User.all
+      User.all
     end
   end
+
+   
 
 end

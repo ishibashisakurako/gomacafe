@@ -1,34 +1,40 @@
 
+<hr>
+
   <div class="row">
 
-    <div class="col-lg-2">
-
-
-
+    <div class="col-md-3">
       <table class="table">
-      <%= image_tag @user.get_profile_image(100,100) %>
-        <h3><%= @user.name %></h3>
-        <%= @user.introduction %>
+      <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
+        <h5><%= @user.name %></h5>
+        <%= simple_format @user.introduction %>
 
           <% if @user == current_user %>
-            <%= link_to "編集", edit_user_path(@user) %>
+            <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-success" %>
           
           <% end %>
       </table>
+      <%= link_to user_favorite_path(@user), class: "btn btn-outline-secondary d-block" do %>
+        <i class="fa fa-heart favorite-btn"></i>お気に入りレシピ一覧
+      <% end %>
     </div>
  
 
 
-    <div class="col-lg-10">
-    <p></p>
-    <h2>あなたのrecipe一覧</h2>
+    <div class="col-md-9">
+    <b>
+    <div class="text-center">
+      <h5><b><i class="fa-solid fa-pen-to-square"></i> <%= @user.name %>さんのレシピ一覧</b></h5></b>
+    </div>
+
+
       <table class="table">
 
         <% @posts.each do |post| %>
 
           <tr>
             <td>
-              <p><%= post.title %></p>
+              <p><b><%= post.title %></b></p>
               <% if post.status == 'publish' %>
                 <div class="badge badge-primary">
                   <%= post.status_i18n %>

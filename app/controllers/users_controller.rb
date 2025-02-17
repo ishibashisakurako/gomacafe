@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def index
   end
@@ -38,7 +39,14 @@ class UsersController < ApplicationController
     redirect_to '/users/sign_up'
   end
 
+  def favorite
+    @user = User.find(params[:user_id])
+    @favorite_posts = @user.favorites.map(&:post)
+    #@favorite_posts.destroy # お気に入りから指定した投稿を削除
+   
 
+  end
+  
   private
 
   def user_params

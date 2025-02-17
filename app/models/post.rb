@@ -15,6 +15,7 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy #コメントと1:Nの関係
   has_many :favorites, dependent: :destroy
 
+  belongs_to :genre, optional: true
 
   def get_image
     unless image.attached?

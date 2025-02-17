@@ -1,8 +1,17 @@
 @use '~bootstrap/scss/bootstrap';
 
-.top-image {
-  object-fit: cover;
-  width: 100%;
-  height: 80vh;
-  object-position: 50% 100%;
+
+.playwrite-in-title {
+  font-family: "Playwrite IN", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.favorite-btn {
+  color: #e54747;
+}
+
+.nofavorite-btn {
+  color: #808080;
 }

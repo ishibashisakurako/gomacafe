@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
   def search
     @range = params[:range]
 
-    if @range == "User"
+    if @range == "user"
       @users = User.looks(params[:word])
     else
       @posts = Post.looks(params[:word])
