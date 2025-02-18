@@ -1,0 +1,9 @@
+<hr>
+
+<h3 class="text-center"><b>
+  <i class="fas fa-tag"></i>
+  <%= @other.name %>
+  (<%= @other.posts.count %>件)
+  </b></h3>
+
+  <%= render 'posts/posts', posts: @posts %>

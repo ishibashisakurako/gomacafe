@@ -1,2 +1,14 @@
-<%= notice %>
-<%= alert %>
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <% if notice %>
+      <div class="alert alert-success text-center">
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger text-center">
+        <%= alert %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -13,7 +13,7 @@ class FavoritesController < ApplicationController
     post = Post.find(params[:post_id])
     favorite =current_user.favorites.find_by(post_id: post.id)
     favorite.destroy
-      redirect_to post_path(post)
+    redirect_back(fallback_location: root_url)
   end
 
 

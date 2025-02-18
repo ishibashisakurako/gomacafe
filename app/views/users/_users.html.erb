@@ -1,0 +1,26 @@
+<table class="table table-hover table-inverse">
+<!--検索対象モデルがUserの時 -->
+  <tbody id="search_data">
+    <tr>
+      <th>ユーザー名</th>
+      <th>自己紹介</th>
+    </tr>
+
+    <% users.each do |user| %>
+    <tr data-href="<%= user_path(user) %>">
+      <td>
+        <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
+        <%= user.name %>さん</td>
+      <td><%= user.introduction %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+  $("#search_data").on("click", (e) => {
+    const target = $(e.target).parent()
+    const url = target.data("href")
+    window.location.href = url
+  })
+</script>

@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def favorite
     @user = User.find(params[:user_id])
-    @favorite_posts = @user.favorites.map(&:post)
+    @favorite_posts = @user.favorite_posts
     #@favorite_posts.destroy # お気に入りから指定した投稿を削除
    
 

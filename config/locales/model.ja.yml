@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        title: タイトル
+        material: 材料
+        recipe: 作り方

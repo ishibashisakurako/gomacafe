@@ -24,4 +24,8 @@ Rails.application.routes.draw do
   end
 
   get "search" => "searches#search"
-  end
+
+
+  resources :genres, only: [:show]
+  resources :others, only: [:show]
+end

@@ -16,6 +16,7 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   belongs_to :genre, optional: true
+  belongs_to :other, optional: true
 
   def get_image
     unless image.attached?

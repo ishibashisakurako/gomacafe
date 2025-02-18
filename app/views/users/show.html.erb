@@ -1,69 +1,65 @@
-
 <hr>
 
-  <div class="row">
+<div class="row">
 
-    <div class="col-md-3">
-      <table class="table">
-      <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
-        <h5><%= @user.name %></h5>
-        <%= simple_format @user.introduction %>
+  <div class="col-md-3">
+    <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
+    <h5><%= @user.name %></h5>
+    <%= simple_format @user.introduction %>
 
-          <% if @user == current_user %>
-            <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-success" %>
-          
-          <% end %>
-      </table>
-      <%= link_to user_favorite_path(@user), class: "btn btn-outline-secondary d-block" do %>
-        <i class="fa fa-heart favorite-btn"></i>お気に入りレシピ一覧
-      <% end %>
-    </div>
+    <% if @user == current_user %>
+      <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-success" %>
+    <% end %>
+
+    <hr>
+
+    <%= link_to user_favorite_path(@user), class: "btn btn-outline-secondary d-block" do %>
+      <i class="fa fa-heart favorite-btn"></i>お気に入りレシピ一覧
+    <% end %>
+  </div>
  
-
-
-    <div class="col-md-9">
-    <b>
+  <div class="col-md-9">
     <div class="text-center">
       <h5><b><i class="fa-solid fa-pen-to-square"></i> <%= @user.name %>さんのレシピ一覧</b></h5></b>
     </div>
 
+    <table class="table">
 
-      <table class="table">
+      <% @posts.each do |post| %>
+        <tr>
+          <td>
+            <p><b><%= post.title %></b></p>
+            <% if post.status == 'publish' %>
+              <div class="badge badge-primary">
+                <%= post.status_i18n %>
+              </div>
+            <% elsif post.status == 'secret'%>
+              <div class="badge badge-success">
+                <%= post.status_i18n %>
+              </div>
+            <% else %>
+              <div class="badge badge-secondary">
+                <%= post.status_i18n %>
+              </div>
+            <% end %>
+          </td>
 
-        <% @posts.each do |post| %>
+          <td><%= link_to post_path(post) do %>
+            <%= image_tag post.get_image, style: "width:200px; height:200px;" %>
+            <% end %>
+          </td>
 
-          <tr>
-            <td>
-              <p><b><%= post.title %></b></p>
-              <% if post.status == 'publish' %>
-                <div class="badge badge-primary">
-                  <%= post.status_i18n %>
-                </div>
-              <% elsif post.status == 'secret'%>
-                <div class="badge badge-success">
-                  <%= post.status_i18n %>
-                </div>
-              <% else %>
-                <div class="badge badge-secondary">
-                  <%= post.status_i18n %>
-                </div>
-              <% end %>
-            </td>
-
-            <td><%= link_to post_path(post) do %>
-              <%= image_tag post.get_image, style: "width:200px; height:200px;" %>
-              <% end %>
-            </td>
-
-            <td>
+          <td>
+            <div class="mx-auto">
               <%= simple_format post.introduction %>
-            </td>
+            </div>
+          </td>
 
-          </tr>
+        </tr>
 
-        <% end %>
-      </table>
-    </div>
+      <% end %>
+    </table>
   </div>
+</div>
 
 

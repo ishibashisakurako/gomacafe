@@ -3,53 +3,33 @@
 <div class="text-center">
   <h4><b><i class="fa-solid fa-camera-retro"></i> レシピ一覧</b></h4>
 </div>
-    <hr>
-
-  <div class="row">
-    <% @posts.each do |post| %>
-      <div class="col-lg-3 col-md-4 col-sm-6">
-        <figure>
-          <%= link_to post_path(post) do %>
-            <%= image_tag post.get_image, style: "width:100%;" %>
-          <% end %>
-            <figcaption>
-            <b><%= post.title %></b>
-
-              <P>
-                  <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %>
-
-            <%= post.user.name %>さんのレシピ
-            </p>
-          </figcaption>
-        </figure>
-         <hr>
-      </div>
-    <% end %>
-  </div>
-
-
-
-<table class="table">
-  <% @posts.each do |post| %>
-    <tr>
-      <td>
-        <%= image_tag post.get_image, style: "width:200px; height:200px;" %>
-      </td>
-
-      <td>
-        <b><%= post.title %></b>
-          <p>
-              <%= post.user.name %>さんのレシピ
-          </p>
-      </td>
-
-      <td>
-        <%= simple_format post.introduction %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-
-
   
+<hr>
+
+<div class="row">
+  <% @posts.each do |post| %>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+
+      <div class="card shadow">
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.get_image, style: "width:100%;" %>
+        <% end %>
+        <div class="card-body">
+          <div class="text-center">
+            <b><%= post.title %></b>
+          </div>
+          <div class="mb-1">
+            <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %>
+            <%= post.user.name %>さん
+          </div>
+          <div class="text-right">
+            <i class="fa-solid fa-heart favorite-btn" style="font-size:32px;"></i>
+            <%= post.favorites.count %>
+          </div>
+        </div>
+      </div>
+      <div class="mb-5">
+      </div>
+    </div>
+  <% end %>
 </div>

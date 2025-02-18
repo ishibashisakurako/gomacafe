@@ -13,7 +13,6 @@ class PostsController < ApplicationController
       flash[:notice] = "投稿しました！"
       redirect_to post_path(@post.id) #成功なら詳細に飛ぶ
     else
-      flash[:notice] = "投稿できませんでした"
       render :new #失敗したらnewに飛ぶ
     end
   end
@@ -69,7 +68,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:status, :title, :image, :amount, :introduction, :material, :recipe, :point, :genre_id)
+    params.require(:post).permit(:status, :title, :image, :amount, :introduction, :material, :recipe, :point, :genre_id, :other_id)
   end
 
   def correct_user

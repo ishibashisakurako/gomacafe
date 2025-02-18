@@ -1,0 +1,24 @@
+ <table class="table table-hover table-inverse">
+  <tbody id="search_data">
+    <tr>
+      <th width="20%"></th>
+      <th>タイトル</th>
+      <th>レシピ概要</th>
+    </tr>
+    <% posts.each do |post| %>
+      <tr data-href="<%= post_path(post) %>">
+        <td><%= image_tag post.get_image, style: "width:200px; height:200px;" %></td>
+        <td><%= post.title %></td>
+        <td><%= simple_format post.introduction %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+  $("#search_data").on("click", (e) => {
+    const target = $(e.target).parent()
+    const url = target.data("href")
+    window.location.href = url
+  })
+</script>

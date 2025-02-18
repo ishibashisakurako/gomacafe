@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-10 offset-1">
+    <h5><b><i class="fa-solid fa-comment"></i> コメント </b><%= post.post_comments.count %>件</h5>
+    <% post.post_comments.each do |post_comment| %>
+      <table class="table">
+        <tr> 
+          <td>
+            <%= image_tag post_comment.user.get_profile_image(70,70), class: "rounded-circle" %>
+            <%= post_comment.user.name %></b>さん
+          </td>
+          <td>
+            <%= simple_format post_comment.comment %>
+          </td>
+          <td>
+            <div class="text-right">
+              <% if post_comment.user == current_user %>
+                <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), class: "btn btn-danger", method: :delete, data: {confirm: "コメントを削除しますか？"} %>
+              <% end %>
+              <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 offset-2">
+    <%= form_with model: [post, post_comment] do |f| %>
+      <%= f.text_area :comment, rows: '5', placeholder: "思いやりのあるコメントを心掛けましょう" , size: "80×20" %>
+      <%= f.submit "送信" , class: "btn btn-secondary mb-5" %>
+    <% end %>
+  </div>
+</div>
