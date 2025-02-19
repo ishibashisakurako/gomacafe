@@ -20,6 +20,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.publish_posts.page(params[:page]) #全てを表示する
+    @genres = Genre.all
+    @others = Other.all
   end
 
 

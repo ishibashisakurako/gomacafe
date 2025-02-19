@@ -20,6 +20,8 @@
   <div class="col-md-8">
     <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
     <%= link_to @user.name, user_path(@user.id) %>さんのレシピ
+    <%= render "relationships/btn", user: @user, options: { class: ""} %>
+
 
     <hr>
 
@@ -59,12 +61,16 @@
       <% if @post.genre || @post.other %>
         <div class="d-flex align-items-end">
           <div class="ml-5">
+          </div>
+          <% if @post.genre %>
             <i class="fas fa-tag tag-btn" style="font-size:32px;"></i>
-          </div>
-          <div class="d-flex align-items-end">
-            <%=link_to @post.genre.name, genre_path(@post.genre) if @post.genre %>
-            <%=link_to @post.other.name, other_path(@post.other) if @post.other %>
-          </div>
+          <%=link_to @post.genre.name, genre_path(@post.genre) %>
+          <% end %>
+
+          <% if @post.other %>
+            <i class="fas fa-tag tag-btn ml-2" style="font-size:32px;"></i>
+            <%=link_to @post.other.name, other_path(@post.other) %>
+          <% end %>
         </div>
       <% end %>
     </div>

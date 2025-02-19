@@ -27,9 +27,26 @@
             <%= post.favorites.count %>
           </div>
         </div>
-      </div>
-      <div class="mb-5">
+        </div>
+        <div class="mb-5">
       </div>
     </div>
   <% end %>
+</div>
+
+
+<hr>
+
+<div class="row">
+  <div class="col-md-12 mb-5">
+    <h4 class="text-center"><b>
+    <i class="fas fa-tag"></i>タグ一覧</b></h4>
+    <hr>
+    <% @genres.each do |genre| %>
+      <%= link_to genre.name, genre_path(genre), class: "btn btn-info" %>
+    <% end %>
+    <% @others.each do |other| %>
+      <%= link_to other.name, other_path(other), class: "btn btn-success" %>
+    <% end %>
+  </div>
 </div>
