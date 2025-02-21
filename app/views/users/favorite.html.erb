@@ -1,8 +1,7 @@
 <hr>
-<h5><b><div class="text-center">
- <%= @user.name %>さんのお気に入りレシピ一覧
- </b></h5>
- </div>
+<h5 class="text-center"><b>
+  <i class="fa-solid fa-heart"></i><%= @user.name %>さんのお気に入りレシピ一覧
+  </b></h5>
 <hr>
 
 
@@ -15,7 +14,7 @@
 <b><%= post.title %></b>
 <p><%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %>
             <%= post.user.name %>さんのレシピ</p>
-        <%= link_to "削除", post_favorites_path(post), method: :delete, class: "btn btn-secondary" %>
+        <%= link_to "削除", post_favorites_path(post), method: :delete, class: "btn btn-outline-danger", data: {confirm: "お気に入りから削除しますか？"} %>
 
       </div>
     <% end %>

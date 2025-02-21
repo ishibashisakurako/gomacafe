@@ -1,34 +1,33 @@
 <hr>
 
-<h4 class="text-center"><b>フォロー中のユーザー一覧</b></h4>
+<h4 class="text-center"><b><i class="fa-solid fa-users"></i>フォロー中のユーザー一覧</b></h4>
 
 <hr>
 <div class="row">
-  <div class="col-md-8 offset-md-2">
-    <% if @users.exists? %>
-      <% @users.each do |user| %>
-                 <div class="d-flex">
- 
-          <div class="card">
-
-            <figure>
-              <%= link_to user_path(user) do %>
-                <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
-              <% end %>
-              <div class="card-body">
+  <% if @users.exists? %>
+    <% @users.each do |user| %>
+      <div class="col-lg-4 col-md-2 col-sm-6">
+        <div class="card shadow mb-3" style="height:315px;">
+          <div class="card-body">
+            <div class="text-center">
+              <figure>
+                  <%= link_to user_path(user) do %>
+                    <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
+                  <% end %>
                 <figcaption>
-                  <%= user.name %>
-                  <%= simple_format user.introduction %>
+                  <b><%= user.name %></b>
+                  <hr>
+                  <%= simple_format user.introduction&.truncate(40) %>
                 </figcaption>
-              </div>
-              <%= render "relationships/btn", user: user, options: { class: ""} %>
-            </figure>
+                  <%= render "relationships/btn", user: user, options: { class: ""} %>
+              <figure>
+            </div>
           </div>
         </div>
-      <% end %>
-      <% else %>
-        <p>まだ誰もフォローしていません。</p>
-      <p>沢山の方と繋がりましょう！</p>
+      </div>
     <% end %>
-  </div>
+    <% else %>
+      <div class="text-center">まだ誰もフォローしていません。
+      </div>
+  <% end %>
 </div>

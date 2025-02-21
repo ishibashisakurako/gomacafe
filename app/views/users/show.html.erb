@@ -4,7 +4,7 @@
 
   <div class="col-md-3">
     <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
-    <h5><%= @user.name %></h5>
+    <h5><i class="fa-solid fa-user"></i> <%= @user.name %></h5>
     フォロー中
     <%= link_to @user.followings.count, user_followings_path(@user) %>
     フォロワー
@@ -63,9 +63,7 @@
               <%= simple_format post.introduction %>
             </div>
           </td>
-
         </tr>
-
       <% end %>
     </table>
   </div>

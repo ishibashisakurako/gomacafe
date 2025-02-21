@@ -1,13 +1,31 @@
 <hr>
-<h4 class="text-center"><b>フォロワー一覧</b></h4>
+<h4 class="text-center"><b><i class="fa-solid fa-users"></i>フォロワー一覧</b></h4>
 <hr>
 
-<% if @users.exists? %>
-  <% @users.each do |user| %>
-    <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
-    <%= user.name %>
+<div class="row">
+  <% if @users.exists? %>
+    <% @users.each do |user| %>
+      <div class="col-lg-4 col-md-2 col-sm-6">
+        <div class="card shadow mb-3" style="height:315px;">
+          <div class="card-body">
+            <div class="text-center">
+              <figure>
+                <%= link_to user_path(user) do%>
+                  <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
+                <% end %>
+                <figcaption>
+                  <%= user.name %>
+                  <hr>
+                  <%= simple_format user.introduction&.truncate(40) %>
+                </figcaption>
+                <%= render "relationships/btn",user: user, options: { class: ""} %>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% else %>
+      <div class="text-center">まだ誰からもフォローされていません。</div>
   <% end %>
-<% else %>
-  <p>まだ誰からもフォローされていません。</p>
-  <p>公開投稿を増やしていきましょう！</p>
-<% end %>
+</div>

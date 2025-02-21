@@ -16,23 +16,22 @@
   <%= image_tag 'syu.jpg', style: "width:300px; height:300px;", class: "rounded-circle mx-1" %>
 </div>
 <hr>
-    <div class="text-center">
-      <b>gomacafeにようこそ！一緒にお菓子作りを楽しみましょう！
+    <div class="text-center mb-3">
+      <b>gomacafeで一緒にお菓子作りを楽しみましょう！
       <br>
       <br>自分のレシピを世界中の人に食べてほしい！
       <br>発信するのは苦手だけど、記録はしたい...
       <br>
       <br>gomacafeでは、公開・非公開・下書きからステータスを選んで保存できます！
-      <br>自分だけの ”レシピノート” を作りませんか？</b>
       <br>
 
 
     <% if user_signed_in? %> 
-      <%= link_to "マイページへ", user_path(current_user), class:"btn btn-info" %>
+      <%= link_to "マイページへ", user_path(current_user), class:"btn btn-outline-info" %>
     <% else %>
       <hr>
-        <%= link_to "新規登録", new_user_registration_path, class:"btn btn-success" %>
-        <%= link_to "ログイン", new_user_session_path, class:"btn btn-info" %>
+        <%= link_to "新規登録", new_user_registration_path, class:"btn btn-outline-success" %>
+        <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-info" %>
     <% end %>
 
     </div>

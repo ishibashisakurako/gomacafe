@@ -11,7 +11,7 @@
       <td>
         <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
         <%= user.name %>さん</td>
-      <td><%= user.introduction %></td>
+      <td><%= simple_format user.introduction %></td>
     </tr>
     <% end %>
   </tbody>
