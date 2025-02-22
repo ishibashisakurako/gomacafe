@@ -12,6 +12,25 @@
   <b>レシピ概要</b>
   <p><%= f.text_area :introduction, placeholder: "レシピについての簡単な説明を2-3行で書きましょう！", size: "80×20" %></p>
 
+  <b>簡単レベル</b>(簡単→星1つ 難しい→星5つ)
+  <div id="post_raty"></div>
+  <script>
+    $(document).on('turbolinks:load', function() {
+      let elem = document.querySelector('#post_raty');
+      if (elem == null) return;
+
+      elem.innerHTML = ""
+      let opt = {  
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'post[star]',
+      };
+      raty(elem, opt);
+    });
+  </script>
+  <p></p>
+
   <b>量</b>
   <p><%= f.text_field :amount, placeholder: "〇cm型〇個分・〇個分など", size: "80×20" %></p>
 
