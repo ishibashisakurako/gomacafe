@@ -1,0 +1,11 @@
+<hr>
+<h4 class="text-center"><b>コラムを投稿する</b></h4>
+<hr>
+
+<%= form_with model: @column do |f| %>
+<p>タイトル</p>
+<%= f.text_field :title %>
+<p>コラムの内容</p>
+ <%= f.rich_text_area :body %>
+ <%= f.submit '投稿する' %>
+<% end %>

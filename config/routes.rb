@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  
+
+  resources :columns
+
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: 'admin/sessions'
   }

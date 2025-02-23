@@ -1,0 +1,13 @@
+<hr>
+<h4 class="text-center"><b>コラム一覧</b></h4>
+<hr>
+
+<% @columns.each do |column| %>
+
+<p>タイトル</p>
+<%= column.title %>
+
+<p>本文</p>
+<%= column.body %>
+
+<% end %>

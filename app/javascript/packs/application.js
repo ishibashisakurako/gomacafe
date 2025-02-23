@@ -11,7 +11,8 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"; 
+import "../stylesheets/application";
+import "../stylesheets/actiontext"
 
 Rails.start()
 Turbolinks.start()
@@ -23,3 +24,5 @@ window.raty = function(elem,opt) {
     raty.init();
     return raty;
 }
+require("trix")
+require("@rails/actiontext")
