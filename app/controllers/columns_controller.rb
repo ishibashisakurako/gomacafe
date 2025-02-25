@@ -21,6 +21,19 @@ class ColumnsController < ApplicationController
   end
 
   def edit
+    @column = Column.find(params[:id])
+  end
+
+  def update
+    @column = Column.find(params[:id])
+    @column.update(column_params)
+    redirect_to column_path(@column)
+  end
+
+  def destroy
+    column = Column.find(params[:id])
+    column.destroy
+    redirect_to columns_path
   end
 
   private

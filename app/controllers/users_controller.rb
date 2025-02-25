@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:guest_login]
+  before_action :correct_user, only: [:favorite]
 
   def index
   end
@@ -43,14 +44,28 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     @favorite_posts = @user.favorite_posts
     #@favorite_posts.destroy # お気に入りから指定した投稿を削除
-   
-
   end
-  
+
+  def guest_login
+    @user = User.guest
+    sign_in(@user)
+    redirect_to posts_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+
+  def columns
+    @user = User.find(params[:user_id])
+    @columns = @user.columns
+  end
+
   private
 
   def user_params
   params.require(:user).permit(:name, :profile_image, :introduction)
+  end
+
+  def correct_user
+    @user = User.find(params[:user_id])
+    redirect_to root_path @user != current_user
   end
 
 end

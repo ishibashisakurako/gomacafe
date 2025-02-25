@@ -1,0 +1,5 @@
+<%= form_with model: @expiration do |f| %>
+  <%= f.text_field :name %>
+  <%= f.date_field :start_time, value: params[:date] %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,17 @@
+<h2>month</h2>
+
+<%= month_calendar(events: @expirations) do |date, expirations| %>
+  <%= link_to date.day, new_expiration_path(date: date) %><br>
+  <% expirations.each do |expiration| %>
+    <%= link_to expiration.name, edit_expiration_path(expiration) %>
+  <% end %>
+<% end %>
+
+<h2>week</h2>
+
+<%= week_calendar(number_of_weeks: 1, events: @expirations) do |date, expirations| %>
+  <%= date.day %><br>
+  <% expirations.each do |expiration| %>
+    <%= expiration.name %>
+  <% end %>
+<% end %>

@@ -1,13 +1,9 @@
 <hr>
-<h4 class="text-center"><b>コラム一覧</b></h4>
+<h4 class="text-center"><b><i class="fa-solid fa-feather"></i> コラム一覧</b></h4>
 <hr>
 
 <% @columns.each do |column| %>
-
-<p>タイトル</p>
-<%= column.title %>
-
-<p>本文</p>
-<%= column.body %>
-
+  <%= image_tag column.user.get_profile_image(100,100), class: "rounded-circle" %>
+  <%= link_to column.title, column_path(column) %>
+  <hr>
 <% end %>

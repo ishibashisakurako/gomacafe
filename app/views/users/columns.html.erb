@@ -1,0 +1,9 @@
+<hr>
+<h4 class="text-center"><b><%= @user.name %>さんのコラム一覧</b></h4>
+<hr>
+
+<% @columns.each do |column| %>
+
+<%= link_to column.title, column_path(column) %>
+<hr>
+<% end %>

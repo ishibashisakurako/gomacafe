@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -16,6 +17,8 @@ class User < ApplicationRecord
   has_many :favorite_posts, through: :favorites, source: :post
 
   validates :name, presence: true
+
+  has_many :expirations, dependent: :destroy
 
 #active_relationships(activeは活動的 フォローしているuserと関連づける foreign_key(外部キー)はフォロワー、連動したら削除)
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -42,7 +45,6 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/noimage.jpg')
@@ -60,6 +62,13 @@ class User < ApplicationRecord
     end
   end
 
-   
-
+  def self.guest
+    user = self.find_or_initialize_by(email: "guest@test.com")
+    user.assign_attributes(
+      password: SecureRandom.hex(6),
+      name: "ゲスト"
+    )
+    user.save
+    user
+  end
 end

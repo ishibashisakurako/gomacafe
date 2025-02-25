@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-
-  resources :columns
+  devise_scope :user do
+    post "guest_login", to: "users#guest_login"
+  end
 
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: 'admin/sessions'
@@ -23,14 +24,18 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
     resource :relationships, only: [:create, :destroy]
-      get "followings" => "relationships#followings", as:"followings"
-      get "followers" => "relationships#followers", as: "followers"
-  get 'favorite', to: 'users#favorite'
+    get "followings" => "relationships#followings", as:"followings"
+    get "followers" => "relationships#followers", as: "followers"
+    get 'favorite', to: 'users#favorite'
+    get 'columns', to: 'users#columns'
   end
 
   get "search" => "searches#search"
 
-
   resources :genres, only: [:show]
   resources :others, only: [:show]
+
+  resources :columns
+
+  resources :expirations
 end

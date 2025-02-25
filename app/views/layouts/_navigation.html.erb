@@ -37,6 +37,12 @@
         </li>
 
         <li>
+          <%= link_to columns_path, class:"nav-link" do %>
+            <b>コラム</b>
+          <% end %>
+        </li>
+
+        <li>
           <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
             <b><i class="fa-solid fa-user-minus"></i>ログアウト</b>
           <% end %>

@@ -22,8 +22,17 @@
 
     <hr>
 
-    <%= link_to user_favorite_path(@user), class: "btn btn-outline-secondary d-block" do %>
-      <i class="fa fa-heart favorite-btn"></i>お気に入りレシピ一覧
+    <% if user_signed_in? && @user == current_user %>
+      <%= link_to user_favorite_path(@user), class: "btn btn-outline-secondary d-block" do %>
+        <i class="fa fa-heart favorite-btn"></i>お気に入りレシピ一覧
+      <% end %>
+    <% end %>
+
+    <%= link_to user_columns_path(@user) do %><i class="fa-solid fa-feather"></i>コラム一覧
+    <% end %>
+
+    <% if user_signed_in? && @user == current_user %>
+      <%= link_to "賞味期限管理", expirations_path %>
     <% end %>
   </div>
  

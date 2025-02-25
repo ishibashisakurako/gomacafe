@@ -1,0 +1,11 @@
+
+<%= form_with model: @column do |f| %>
+<p><b>タイトル</b></p>
+<%= f.text_field :title, size: "90x20" %>
+<hr>
+<p><b>コラムの内容</b></p>
+  <%= f.rich_text_area :body, rows: 30 %>
+  <div class="mt-2">
+  <%= f.submit "投稿する", class:"btn btn-outline-success" %>
+  </div>
+<% end %>

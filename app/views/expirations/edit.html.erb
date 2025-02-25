@@ -1,0 +1,7 @@
+<%= form_with model: @expiration do |f| %>
+  <%= f.text_field :name %>
+  <%= f.date_field :start_time, value: params[:date] %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "削除", expiration_path(@expiration), method: :delete, data: { confirm: "本当に削除しますか？" } %>
