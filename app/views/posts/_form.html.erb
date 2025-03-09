@@ -3,14 +3,16 @@
 <%= form_with model: post do |f| %>
 
   <b>タイトル</b> <span class="badge badge-warning">必須</span>
-
   <p><%= f.text_field :title, size: "80x20", placeholder: "12文字以内推奨" %></p>
+  <hr>
 
   <b>写真</b>
   <p><%= f.file_field :image, accept: "image/*" %></p>
+  <hr>
 
   <b>レシピ概要</b>
   <p><%= f.text_area :introduction, placeholder: "レシピについての簡単な説明を2-3行で書きましょう！", size: "80×20" %></p>
+  <hr>
 
   <b>簡単レベル</b>(簡単→星1つ 難しい→星5つ)
   <div id="post_raty"></div>
@@ -29,23 +31,28 @@
       raty(elem, opt);
     });
   </script>
-  <p></p>
+  <hr>
 
   <b>量</b>
   <p><%= f.text_field :amount, placeholder: "〇cm型〇個分・〇個分など", size: "80×20" %></p>
+  <hr>
 
   <b>材料</b> <span class="badge badge-warning">必須</span>
   <p><%= f.text_area :material, placeholder: "詳しく書きましょう！例:砂糖→グラニュー糖など詳しく書くとgood", size: "80x20" %></p>
+  <hr>
 
   <b>作り方</b> <span class="badge badge-warning">必須</span>
   <p><%= f.text_area :recipe, size: "80x20" %></p>
+  <hr>
 
   <b>ポイント</b>
   <p><%= f.text_area :point, placeholder: "作る際の注意点などを書いてあげると優しいです", size: "80x10" %></p>
+  <hr>
 
   <b>ジャンル</b> (選択すると沢山のユーザーの目に留まりやすくなります！)
   <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--どんな時に作りたい？--" }, { class: "form-control mb-2 w-50" } %>
   <%= f.collection_select :other_id, Other.all, :id, :name, { include_blank: "--その他--" }, { class: "form-control mb-2 w-50" } %>
+  <hr>
 
   <b>ステータス</b> 
   <%= f.select :status, Post.statuses.keys.map { |k| [I18n.t("enums.post.status.#{k}"), k] }, {}, { class: "form-control mb-2 w-25" } %>

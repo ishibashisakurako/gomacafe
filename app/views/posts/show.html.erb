@@ -2,10 +2,9 @@
 
 <hr>
 
-<div class="text-center">
-  <h3><b><%= @post.title %></b></h3>
+<div class="text-center mozi">
+  <%= @post.title %>
 </div>
-
 <hr>
 
 <div class="row">
@@ -21,18 +20,16 @@
     <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
     <%= link_to @user.name, user_path(@user.id) %>さんのレシピ
     <%= render "relationships/btn", user: @user, options: { class: ""} %>
-
-
     <hr>
 
-<div class="d-flex">
-  <h5><b><i class="fa-solid fa-check-double"></i> レシピ概要</b></h5>
-  <h5 class="ml-5"><b>簡単レベル </b></h5>
-    <div id="star_<%= @post.id %>"></div>
-    <script>
-    $(document).on('turbolinks:load', function() {
-      let elem = document.querySelector('#star_<%= @post.id %>');
-      if (elem == null) return;
+    <div class="d-flex">
+      <b><i class="fa-solid fa-check-double"></i> レシピ概要</b>
+      <b class="ml-5"><i class="fa-solid fa-flag"></i> 簡単レベル </b>
+        <div id="star_<%= @post.id %>"></div>
+        <script>
+        $(document).on('turbolinks:load', function() {
+          let elem = document.querySelector('#star_<%= @post.id %>');
+          if (elem == null) return;
       
       elem.innerHTML = "";
       let opt = {  
@@ -83,13 +80,10 @@
           <div class="ml-5">
           </div>
           <% if @post.genre %>
-            <i class="fas fa-tag tag-btn" style="font-size:32px;"></i>
-          <%=link_to @post.genre.name, genre_path(@post.genre) %>
+            <%=link_to @post.genre.name, genre_path(@post.genre), class: "tag" %>
           <% end %>
-
           <% if @post.other %>
-            <i class="fas fa-tag tag-btn ml-2" style="font-size:32px;"></i>
-            <%=link_to @post.other.name, other_path(@post.other) %>
+            <%=link_to @post.other.name, other_path(@post.other), class: "tag" %>
           <% end %>
         </div>
       <% end %>
@@ -101,18 +95,18 @@
 
 <div class="row">
   <div class="col-md-4">
-    <h5><b><i class="fa-solid fa-seedling"></i> 材料</h5></b> <%= @post.amount %>
+    <b><i class="fa-solid fa-seedling"></i> 材料</b> <%= @post.amount %>
 
     <hr>
 
     <%= simple_format @post.material %>
   </div>
   <div class="col-md-8">
-    <h5><b><i class="fa-solid fa-mitten"></i> 作り方</b></h5>
+    <b><i class="fa-solid fa-mitten"></i> 作り方</b>
     <hr>
     <%= simple_format @post.recipe %>
     <hr>
-    <h5><b><i class="fa-solid fa-bullhorn"></i> ポイント</b></h5>
+    <b><i class="fa-solid fa-bullhorn"></i> ポイント</b>
     <hr>
     <%= simple_format @post.point %>
   </div>
@@ -120,8 +114,13 @@
 
 <% if @user == current_user %>
   <div class="d-flex justify-content-end">
-    <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-success mr-2" %>
-    <%= link_to "削除", post_path(@post.id), class: "btn btn-outline-danger", method: :delete, data: {confirm: "投稿を削除しますか？"} %>
+    <%= link_to edit_post_path(@post), class: "btn btn-outline-success mr-2" do %>
+      <i class="fa-solid fa-gear"></i>
+    <% end %>
+
+    <%= link_to post_path(@post.id), class: "btn btn-outline-danger", method: :delete, data: {confirm: "投稿を削除しますか？"} do %>
+      <i class="fa-solid fa-trash-can"></i>
+    <% end %>
   </div>
 <% end %>
 

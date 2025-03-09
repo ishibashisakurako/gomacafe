@@ -1,9 +1,9 @@
 <hr>
 
-<h3 class="text-center"><b>
-  <i class="fas fa-tag"></i>
+<div class="text-center heading">
+  <i class="fas fa-tag tag-btn"></i>
   <%= @genre.name %>
   (<%= @genre.posts.count %>件)
-  </b></h3>
+</div>
 
   <%= render 'posts/posts', posts: @posts %>

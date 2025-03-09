@@ -1,4 +1,11 @@
-<h2>month</h2>
+<hr>
+<h4 class="text-center"><b><i class="fa-solid fa-calendar-days"></i> 賞味期限管理</b></h4>
+<hr>
+
+<b class="text-center"><p>カレンダーに食材の賞味期限を記録しましょう！</p>
+<p>賞味期限が近い食材を使ったレシピを探して、消化することができます！</p>
+<p>使い切った食材は削除することによって、まだあるのに買ってしまった..ということも防げます！</p>
+<p>フードロスを減らしていきましょう！</p></b>
 
 <%= month_calendar(events: @expirations) do |date, expirations| %>
   <%= link_to date.day, new_expiration_path(date: date) %><br>
@@ -6,12 +13,4 @@
     <%= link_to expiration.name, edit_expiration_path(expiration) %>
   <% end %>
 <% end %>
-
-<h2>week</h2>
-
-<%= week_calendar(number_of_weeks: 1, events: @expirations) do |date, expirations| %>
-  <%= date.day %><br>
-  <% expirations.each do |expiration| %>
-    <%= expiration.name %>
-  <% end %>
-<% end %>
+<div class="mb-5"></div>

@@ -1,21 +1,33 @@
 <hr>
-<h5 class="text-center"><b>
-  <i class="fa-solid fa-heart"></i><%= @user.name %>さんのお気に入りレシピ一覧
-  </b></h5>
+<div class="text-center font-english heading">
+  <i class="fa-solid fa-heart favorite-btn"></i> My Favorite Recipes 
+</div>
 <hr>
 
+ <div class="row">
+    <% @favorite_posts.each do |post| %>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card shadow mb-5">
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.get_image, style: "width:100%;" %>
+          <% end %>
+          <div class="card-body">
+            <div class="text-center">
+              <b><%= post.title %></b>
+            </div>
+            <div class="mb-1">
+              <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %>
+              <%= post.user.name %>さん
+            </div>
 
-<div class="row">
-  <% @favorite_posts.each do |post| %>
-    <div class="col-lg-3 col-md-4 col-sm-6">
-      <%= link_to post_path(post) do %>
-        <%= image_tag post.get_image, style: "width:100%;" %>
-        <% end %>
-<b><%= post.title %></b>
-<p><%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %>
-            <%= post.user.name %>さんのレシピ</p>
-        <%= link_to "削除", post_favorites_path(post), method: :delete, class: "btn btn-outline-danger", data: {confirm: "お気に入りから削除しますか？"} %>
+            <div class="text-right">
+              <%= link_to post_favorites_path(post), method: :delete, class: "btn btn-outline-danger", data: {confirm: "お気に入りから削除しますか？"} do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </div>
 
+          </div>
+        </div>
       </div>
     <% end %>
   </div>

@@ -1,14 +1,61 @@
 @use '~bootstrap/scss/bootstrap';
 @import "./simple_calendar.scss";
 
-
-.playwrite-in-title {
-  font-family: "Playwrite IN", serif;
+.font-english {
+  font-family: "Philosopher", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
 }
 
+.mozi {
+  font-size: 1.5rem;
+}
+
+.heading {
+  font-size: 2rem;
+}
+
+
+.tag {
+  color: #000;
+  background-color: #faf7f0;
+  border-radius: 8px;
+  padding: .5rem .75rem;
+  font-size: .875rem;
+  padding: .5rem .75rem;
+  margin-left: 6px;
+}
+
+.space {
+  margin-bottom: 5px;
+}
+
+.top {
+  margin-top: 50px;
+}
+
+/* users/show */
+.side {
+  display: block;
+  color: #000;
+}
+
+.image {
+  text-align: center;
+}
+
+.edit {
+  color: green;
+  background-color: #faf7f0;
+  border-radius: 8px;
+  padding: .5rem .75rem;
+  font-size: .875rem;
+  padding: .5rem .75rem;
+  margin-left: 6px;
+}
+
+/* fontawesomeの色 */
 .favorite-btn {
   color: #e54747;
 }
@@ -19,5 +66,17 @@
 
 .tag-btn {
   color: #84c98b;
+}
+
+.expirations-btn {
+  color: #0067c0
+}
+
+.post-btn {
+  color: #f8eb65;
+}
+
+.user-btn {
+  color: #8490c8;
 }
 

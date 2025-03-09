@@ -1,5 +1,12 @@
 <hr>
-<h4 class="text-center"><b>コラム：<%= @column.title %></b></h4>
+<div class="text-center heading">コラム：<%= @column.title %>
+  <% if @column.user == current_user %>
+    <%= link_to edit_column_path(@column), class: "btn btn-outline-success" do %>
+      <i class="fa-solid fa-gear"></i>
+    <% end %>
+<% end %>
+
+</div>
 <hr>
 <%== @column.body %>
 
@@ -13,11 +20,8 @@
   }
 </style>
 
-<% if @column.user == current_user %>
-<%= link_to "編集", edit_column_path(@column), class: "btn btn-outline-success" %>
-<% end %>
 <hr>
-<h4 class="text-center"><b>このコラムを書いた人</b></h4>
+<div class="text-center mozi"><i class="fa-solid fa-user"></i> Column Author</div>
 <%= image_tag @column.user.get_profile_image(100,100), class: "rounded-circle" %>
 <%= link_to @column.user.name, user_path(@column.user.id) %>
 <%= @column.user.introduction %>

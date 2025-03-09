@@ -1,24 +1,27 @@
 <hr>
 
 <div class="row">
-  <div class="col-md-12 mb-5 text-center">
-    <h4><b><i class="fas fa-tag"></i>タグ一覧</b></h4>
+  <div class="col-md-12 mb-5 text-center font-english heading">
+    <i class="fas fa-tag tag-btn"></i> Tag
     <hr>
-    <div>
+    <div class="space">
       <% @genres.each do |genre| %>
-        <%= link_to genre.name, genre_path(genre), class: "btn btn-outline-info" %>
+        <%= link_to genre.name, genre_path(genre), class: "tag" %>
       <% end %>
     </div>
-    <div class="mt-2">
+    <div>
       <% @others.each do |other| %>
-        <%= link_to other.name, other_path(other), class: "btn btn-outline-success" %>
+        <%= link_to other.name, other_path(other), class: "tag" %>
       <% end %>
     </div>
   </div>
 </div>
 
 <hr>
-  <h4 class="text-center"><b><i class="fa-solid fa-camera-retro"></i> レシピ一覧</b></h4>  
+
+<div class="text-center font-english heading">
+  <i class="fa-solid fa-camera-retro"></i> Recipe
+</div>  
 <hr>
 <div class="row">
   <% @posts.each do |post| %>
