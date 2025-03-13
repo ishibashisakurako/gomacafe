@@ -5,3 +5,8 @@ ja:
         draft: 下書き
         publish: 公開
         secret: 非公開
+    column:
+      status:
+        draft: 下書き
+        publish: 公開
+        secret: 非公開

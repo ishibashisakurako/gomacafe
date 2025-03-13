@@ -1,29 +1,21 @@
 <hr>
-
 <div class="row">
-
   <div class="col-md-3 text-center">
-
-  <div class="font-english heading"><i class="fa-solid fa-user user-btn"></i> User</div>
-  <hr>
-
+    <div class="font-english heading"><i class="fa-solid fa-user user-btn"></i> user</div>
+    <hr>
     <div class="mozi">
       <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle image" %>
-      <p>
-        <%= @user.name %>
-            <% if current_user != @user %>
-      <%= render "relationships/btn", user: @user, options: { class: ""} %>
-    <% else %>
-      <%= link_to edit_user_path(@user), class: "edit" do %>
-        <i class="fa-solid fa-gear"></i>
+      <p><%= @user.name %>
+        <% if current_user != @user %>
+          <%= render "relationships/btn", user: @user, options: { class: ""} %>
+        <% else %>
+          <%= link_to edit_user_path(@user), class: "edit" do %>
+          <i class="fa-solid fa-gear"></i>
+        <% end %>
       <% end %>
-    <% end %>
-
       </p>
     </div>
-
-  <hr>
-
+    <hr>
     <p>フォロー中
     <%= link_to @user.followings.count, user_followings_path(@user) %>
     フォロワー
@@ -35,34 +27,31 @@
 
     <hr>
 
-<div class="text-center"> 
-  <div class="font-english heading top"><i class="fa-solid fa-paperclip tag-btn"></i> Link</div>
+    <div class="text-center"> 
+      <div class="font-english heading top"><i class="fa-solid fa-paperclip tag-btn"></i> Link</div>
 
-    <% if user_signed_in? && @user == current_user %>
-    <hr>
-      <%= link_to user_favorite_path(@user), class: "side" do %>
-        <i class="fa fa-heart favorite-btn"></i>お気に入りレシピ一覧
-      <% end %>
-    <% end %>
-
-<hr>
-    <%= link_to user_columns_path(@user), class: "side" do %>
-      <i class="fa-solid fa-feather tag-btn"></i>コラム一覧
-    <% end %>
-
-    <hr>
-
-    <% if user_signed_in? && @user == current_user %>
-      <%= link_to expirations_path, class: "side" do %>
-        <i class="fa-solid fa-calendar-days expirations-btn"></i> 賞味期限管理
-      <% end %>
-    <% end %>
-  </div>
-</div>
+        <% if user_signed_in? && @user == current_user %>
+        <hr>
+          <%= link_to user_favorite_path(@user), class: "side" do %>
+            <i class="fa fa-heart favorite-btn"></i>お気に入りレシピ一覧
+          <% end %>
+        <% end %>
+        <hr>
+        <%= link_to user_columns_path(@user), class: "side" do %>
+          <i class="fa-solid fa-feather tag-btn"></i>コラム一覧
+        <% end %>
+        <hr>
+        <% if user_signed_in? && @user == current_user %>
+          <%= link_to expirations_path, class: "side" do %>
+            <i class="fa-solid fa-calendar-days expirations-btn"></i> 賞味期限管理
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
   <div class="col-md-9">
     <div class="text-center font-english heading">
-      Recipe List
+      <i class="fa-solid fa-mug-hot recipe-btn"></i> Recipe List
     </div>
 
     <table class="table">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_02_24_061407) do
+ActiveRecord::Schema.define(version: 2025_03_13_122709) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2025_02_24_061407) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.integer "status", default: 0, null: false
   end
 
   create_table "expirations", force: :cascade do |t|
@@ -106,8 +107,22 @@ ActiveRecord::Schema.define(version: 2025_02_24_061407) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-# Could not dump table "posts" because of following StandardError
-#   Unknown type '' for column 'genre'
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "material"
+    t.text "recipe"
+    t.text "point"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0, null: false
+    t.string "introduction"
+    t.string "amount"
+    t.integer "genre_id"
+    t.integer "other_id"
+    t.integer "star"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
 
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"

@@ -1,3 +1,8 @@
+<hr>
+<div class="text-center font-english heading">
+  <i class="fa-regular fa-calendar-days expirations-btn"></i> Calendar
+</div>
+<hr>
 <%= form_with model: @expiration do |f| %>
   <%= f.text_field :name %>
   <%= f.date_field :start_time, value: params[:date] %>

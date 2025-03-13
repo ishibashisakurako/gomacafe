@@ -5,6 +5,20 @@
 
 <% @columns.each do |column| %>
 
-<%= link_to column.title, column_path(column) %>
-<hr>
+  <%= link_to column.title, column_path(column) %>
+
+  <% if column.status == 'publish' %>
+    <div class="badge badge-primary">
+      <%= column.status_i18n %>
+    </div>
+  <% elsif column.status == 'secret'%>
+    <div class="badge badge-success">
+      <%= column.status_i18n %>
+    </div>
+  <% else %>
+    <div class="badge badge-secondary">
+      <%= column.status_i18n %>
+    </div>
+  <% end %>
+  <hr>
 <% end %>

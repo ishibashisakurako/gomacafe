@@ -1,11 +1,15 @@
 <hr>
-<h4 class="text-center"><b><i class="fa-solid fa-calendar-days"></i> 賞味期限管理</b></h4>
+  <div class="text-center font-english heading">
+    <i class="fa-regular fa-calendar-days expirations-btn"></i> Calendar
+  </div>
 <hr>
 
-<b class="text-center"><p>カレンダーに食材の賞味期限を記録しましょう！</p>
-<p>賞味期限が近い食材を使ったレシピを探して、消化することができます！</p>
-<p>使い切った食材は削除することによって、まだあるのに買ってしまった..ということも防げます！</p>
-<p>フードロスを減らしていきましょう！</p></b>
+<div class="text-center">
+  <p>カレンダーに食材の賞味期限を記録しましょう！</p>
+  <p>賞味期限が近い食材を使ったレシピを探して、消化することができます！</p>
+  <p>使い切った食材は削除することによって、まだあるのに買ってしまった..ということも防げます！</p>
+  <p>フードロスを減らしていきましょう！</p>
+</div>
 
 <%= month_calendar(events: @expirations) do |date, expirations| %>
   <%= link_to date.day, new_expiration_path(date: date) %><br>

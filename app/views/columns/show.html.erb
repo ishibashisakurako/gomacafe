@@ -1,28 +1,32 @@
 <hr>
-<div class="text-center heading">コラム：<%= @column.title %>
-  <% if @column.user == current_user %>
-    <%= link_to edit_column_path(@column), class: "btn btn-outline-success" do %>
-      <i class="fa-solid fa-gear"></i>
-    <% end %>
-<% end %>
 
-</div>
-<hr>
-<%== @column.body %>
+<div class="row">
+  <div class="col-md-3 offstt-md-1">
+    <div class="text-center mozi font-english"><i class="fa-solid fa-user user-btn"></i> Column User</div>
+    <hr>
+    <%= image_tag @column.user.get_profile_image(100,100), class: "rounded-circle" %>
+    <%= link_to @column.user.name, user_path(@column.user.id) %>
+    <hr>
+  </div>
 
-<style>
-  figcaption {
-    display: none!important;
-  }
-  figure img {
-    max-width: 50%;
-    object-fit: contain;
-  }
-</style>
-
-<hr>
-<div class="text-center mozi"><i class="fa-solid fa-user"></i> Column Author</div>
-<%= image_tag @column.user.get_profile_image(100,100), class: "rounded-circle" %>
-<%= link_to @column.user.name, user_path(@column.user.id) %>
-<%= @column.user.introduction %>
-<hr>
+  <div class="col-md-8">
+    <div class="text-center heading">コラム：<%= @column.title %>
+      <% if @column.user == current_user %>
+        <%= link_to edit_column_path(@column), class: "btn btn-outline-success" do %>
+          <i class="fa-solid fa-gear"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <hr>
+    <%== @column.body %>
+    <style>
+      figcaption {
+        display: none!important;
+      }
+      figure img {
+        max-width: 50%;
+        object-fit: contain;
+      }
+    </style>
+  </div>
+<div>

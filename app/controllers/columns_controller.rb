@@ -1,4 +1,6 @@
 class ColumnsController < ApplicationController
+  before_action :publish_check, only: [:show]
+
   def new
     @column = Column.new
   end
@@ -13,11 +15,11 @@ class ColumnsController < ApplicationController
   end
 
   def index
-    @columns = Column.all
+    @columns = Column.publish_columns
   end
 
   def show
-    @column = Column.find(params[:id])
+    
   end
 
   def edit
@@ -39,6 +41,13 @@ class ColumnsController < ApplicationController
   private
 
   def column_params
-    params.require(:column).permit(:title, :body)
+    params.require(:column).permit(:title, :body, :status)
+  end
+
+  def publish_check
+    @column = Column.find(params[:id])
+    if @column.status != "publish" && @column.user != current_user
+      redirect_to root_path
+    end
   end
 end

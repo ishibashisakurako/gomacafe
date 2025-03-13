@@ -4,6 +4,8 @@
   <hr>
   <p><b>コラムの内容</b></p>
   <%= f.rich_text_area :body, rows: 30 %>
+    <b>ステータス</b> 
+  <%= f.select :status, Column.statuses.keys.map { |k| [I18n.t("enums.column.status.#{k}"), k] }, {}, { class: "form-control mb-2 w-25" } %>
   <div class="mt-2">
     <%= f.submit class:"btn btn-outline-success" do %>
       <i class="fa-solid fa-check"></i>
