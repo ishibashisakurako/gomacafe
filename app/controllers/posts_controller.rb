@@ -17,20 +17,17 @@ class PostsController < ApplicationController
     end
   end
   
-
   def index
     @posts = Post.publish_posts.page(params[:page]) #全てを表示する
     @genres = Genre.all
     @others = Other.all
   end
 
-
   def show
     @post = Post.find(params[:id])
     @user = @post.user
     @post_comment = PostComment.new #コメント投稿できるよ
   end
-
 
   def edit
     #@post = Post.find(params[:id])
@@ -39,7 +36,6 @@ class PostsController < ApplicationController
     #end
   end
 
-  
   def update
     #post = Post.find(params[:id])
     #unless @usee == current_user.id
@@ -55,18 +51,15 @@ class PostsController < ApplicationController
     end
   end
 
-
   def destroy
     #post = Post.find(params[:id]) # 1件取得
     @post.destroy # 削除
     redirect_to user_path(current_user) #マイページへ飛ぶ
   end
-
  
   def tag_list
     @genres = Genre.all
   end
-
 
   private
   def post_params

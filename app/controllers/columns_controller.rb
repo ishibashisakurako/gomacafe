@@ -7,8 +7,8 @@ class ColumnsController < ApplicationController
 
   def create
     @column = current_user.columns.new(column_params)
-    if @column.save!
-    redirect_to column_path(@column)
+    if @column.save
+      redirect_to column_path(@column)
     else
       render :new
     end
@@ -16,10 +16,10 @@ class ColumnsController < ApplicationController
 
   def index
     @columns = Column.publish_columns
+    @user = current_user
   end
 
   def show
-    
   end
 
   def edit

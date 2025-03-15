@@ -9,4 +9,7 @@ class Column < ApplicationRecord
   scope :publish_columns, -> { where(status: 'publish') }
   scope :secret_columns, -> { where(status: 'secret') }
 
+  validates :title, presence: true
+  validates :body, presence: true
+
 end

@@ -11,7 +11,7 @@ class ExpirationsController < ApplicationController
   def create
     @expiration = current_user.expirations.new(expiration_params)
     if @expiration.save
-      flash[:notice] = "投稿できました"
+      flash[:notice] = "賞味期限を登録しました！"
       redirect_to expirations_path
     else
       flash.now[:aleat] = "投稿できませんでした"

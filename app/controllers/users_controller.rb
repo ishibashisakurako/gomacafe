@@ -4,13 +4,11 @@ class UsersController < ApplicationController
 
   def index
   end
-
   
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
   end
-
 
   def edit
     user = User.find(params[:id])
@@ -19,7 +17,6 @@ class UsersController < ApplicationController
   end
     @user = User.find(params[:id])
   end
-
 
   def update
     @user = User.find(params[:id]) #ユーザーの取得
@@ -32,7 +29,6 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
 
   def destroy
     user = User.find(params[:id]) # 1件取得

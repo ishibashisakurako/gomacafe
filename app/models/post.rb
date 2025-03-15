@@ -26,7 +26,6 @@ class Post < ApplicationRecord
       image
     end
     
-
     def favorited_by?(user)
       favorites.exists?(user_id: user.id)
     end
@@ -34,7 +33,6 @@ class Post < ApplicationRecord
     def self.looks(word)
       if word
         Post.where(['title LIKE ?', "%#{word}%"])
-
       else
         @post = Post.all
       end
