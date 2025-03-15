@@ -1,16 +1,24 @@
 <%= render 'layouts/error_messages', model: @column %>
 
-<%= form_with model: @column do |f| %>
-  <p><b>タイトル</b></p>
-  <%= f.text_field :title, size: "90x20" %>
-  <hr>
-  <p><b>コラムの内容</b></p>
-  <%= f.rich_text_area :body, rows: 30 %>
-    <b>ステータス</b> 
-  <%= f.select :status, Column.statuses.keys.map { |k| [I18n.t("enums.column.status.#{k}"), k] }, {}, { class: "form-control mb-2 w-25" } %>
-  <div class="mt-2">
-    <%= f.submit class:"btn btn-outline-success" do %>
-      <i class="fa-solid fa-check"></i>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <%= form_with model: @column do |f| %>
+        <p class="text-center">タイトル</p>
+        <%= f.text_field :title, size: "90x20" %>
+        <hr>
+        <p class="text-center">コラムの内容</p>
+        <p><%= f.rich_text_area :body, rows: 30 %></p>
+        <hr>
+        <p class="text-center">ステータス</p> 
+        <%= f.select :status, Column.statuses.keys.map { |k| [I18n.t("enums.column.status.#{k}"), k] }, {}, { class: "form-control mb-2 w-25" } %>
+        <div class="mt-2">
+          <%= f.button class:"btn btn-outline-success" do %>
+            <i class="fa-solid fa-check"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
+

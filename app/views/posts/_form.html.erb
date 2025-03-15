@@ -57,8 +57,9 @@
   <b>ステータス</b> 
   <%= f.select :status, Post.statuses.keys.map { |k| [I18n.t("enums.post.status.#{k}"), k] }, {}, { class: "form-control mb-2 w-25" } %>
 
-  <%= f.submit button_message, class: "btn btn-outline-success mb-3" %>
-
-  
-
+  <div class="d-flex justify-content-end">
+    <%= f.button class: "btn btn-outline-success" do %>
+      <i class="fa-solid fa-check"></i>
+    <% end %>
+  </div>
 <% end %>

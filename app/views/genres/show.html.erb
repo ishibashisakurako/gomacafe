@@ -1,9 +1,8 @@
 <hr>
-
 <div class="text-center heading">
   <i class="fas fa-tag tag-btn"></i>
   <%= @genre.name %>
   (<%= @genre.posts.count %>件)
 </div>
 
-  <%= render 'posts/posts', posts: @posts %>
+<%= render 'posts/posts', posts: @posts %>
