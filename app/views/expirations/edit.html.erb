@@ -1,6 +1,6 @@
 <hr>
 <div class="text-center font-english heading">
-  <i class="fa-regular fa-calendar-days expirations-btn"></i> Calendar
+  <i class="fa-regular fa-calendar-days blue"></i> Calendar
 </div>
 <hr>
 
@@ -10,4 +10,6 @@
   <%= f.submit %>
 <% end %>
 
-<%= link_to "削除", expiration_path(@expiration), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+<%= link_to expiration_path(@expiration), class: "btn btn-outline-danger", method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+  <i class="fa-solid fa-trash-can"></i>
+<% end %>

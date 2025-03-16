@@ -4,37 +4,33 @@
     <title>gomacafe</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
     <script src="https://kit.fontawesome.com/3e1d980350.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-      <link href="https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+IT+Moderna:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
-
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#b7dee3;">
       <div class="container">
         <a class="navbar-brand" href="/admin">
-          <span class="playwrite-in-title">gomacafe Admin</span>
+          <span class="font-english">gomacafe Admin</span>
         </a>
-
         <ul class="navbar-nav ml-auto">
           <% if admin_signed_in? %>
             <li>
               <b><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></b>
             </li>
-
             <li>
               <b><%= link_to 'ユーザーページ', root_path, class: 'nav-link' %></b>
             </li>
           <% end %>
         </ul>
-
       </div>
     </header>
   </nav>
-
 
   <div class="container">
     <%= yield %>

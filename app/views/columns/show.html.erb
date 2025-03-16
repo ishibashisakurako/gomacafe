@@ -1,19 +1,32 @@
 <hr>
 <div class="row">
-  <div class="col-md-3 offstt-md-1">
+  <div class="col-md-3">
     <div class="text-center">
-      <div class="mozi font-english">
-        <i class="fa-solid fa-user user-btn"></i> Author
+      <div class="font-english heading">
+        <i class="fa-solid fa-user pale-blue"></i> Author
       </div>
       <hr>
       <%= image_tag @column.user.get_profile_image(100,100), class: "rounded-circle" %>
-      <p class="mozi"><%= link_to @column.user.name, user_path(@column.user.id) %></p>
+      <%= link_to user_path(@column.user.id), class: "side" do %>
+        <%= @column.user.name %>
+      <% end %>
       <hr>
+      <div class="font-english heading">
+        <i class="fa-solid fa-paperclip green"></i> Link
+      </div>
+      <hr>
+      <%= link_to user_columns_path(@user), class: "side" do %>
+        <i class="fa-solid fa-user pale-blue"></i> 自分のコラム一覧
+      <% end %>
+      <hr>
+      <%= link_to new_column_path, class: "side" do %>
+        <i class="fa-solid fa-wand-magic-sparkles yellow"></i> コラムを投稿する
+      <% end %>
     </div>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-9">
     <div class="text-center mozi">
-      <i class="fa-solid fa-feather tag-btn"></i> コラム：<%= @column.title %>
+      <i class="fa-solid fa-feather green"></i> コラム：<%= @column.title %>
       <% if @column.user == current_user %>
         <%= link_to edit_column_path(@column), class: "btn btn-outline-success" do %>
           <i class="fa-solid fa-gear"></i>
@@ -32,4 +45,4 @@
       }
     </style>
   </div>
-<div>
+</div>

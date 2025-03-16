@@ -1,7 +1,7 @@
 <%= render 'layouts/error_messages', model: @post %>
 <hr>
 <div class="text-center mozi">
-  <i class="fa-solid fa-mug-hot recipe-btn"></i> <%= @post.title %>
+  <i class="fa-solid fa-mug-hot brown"></i> <%= @post.title %>
 </div>
 <hr>
 <div class="row">
@@ -18,33 +18,29 @@
     <%= render "relationships/btn", user: @user, options: { class: ""} %>
     <hr>
     <div class="d-flex">
-      <b><i class="fa-solid fa-check-double"></i> レシピ概要</b>
-      <b class="ml-5"><i class="fa-solid fa-flag"></i> 簡単レベル </b>
-        <div id="star_<%= @post.id %>"></div>
-        <script>
+      <b><i class="fa-solid fa-check-double green"></i> レシピ概要</b>
+      <b class="ml-5"><i class="fa-solid fa-flag yellow"></i> 簡単レベル </b>
+      <div id="star_<%= @post.id %>"></div>
+      <script>
         $(document).on('turbolinks:load', function() {
           let elem = document.querySelector('#star_<%= @post.id %>');
           if (elem == null) return;
       
-      elem.innerHTML = "";
-      let opt = {  
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        starHalf: "<%= asset_path('star-half.png') %>",
-        score: "<%= @post.star %>",
-        readOnly: true,
-      };
-      raty(elem, opt);
-    });
-    </script>
-</div>
-
+          elem.innerHTML = "";
+          let opt = {  
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            score: "<%= @post.star %>",
+            readOnly: true,
+          };
+          raty(elem, opt);
+        });
+      </script>
+    </div>
     <hr>
-
     <%= simple_format @post.introduction %>
-
-    <hr>
-    
+    <hr>   
     <div class="d-flex">
       <% if @post.favorited_by?(current_user) %>
         <div class="d-flex">
@@ -57,7 +53,7 @@
             <span><%= @post.favorites.count %></span>
           </div>
         </div>
-        <% else %>
+      <% else %>
         <div class="d-flex">
           <div class="mr-1">
             <%= link_to post_favorites_path(@post), method: :post do %>
@@ -72,8 +68,7 @@
 
       <% if @post.genre || @post.other %>
         <div class="d-flex align-items-end">
-          <div class="ml-5">
-          </div>
+          <div class="ml-5"></div>
           <% if @post.genre %>
             <%=link_to @post.genre.name, genre_path(@post.genre), class: "tag" %>
           <% end %>
@@ -90,18 +85,16 @@
 
 <div class="row">
   <div class="col-md-4">
-    <b><i class="fa-solid fa-seedling"></i> 材料</b> <%= @post.amount %>
-
+    <b><i class="fa-solid fa-seedling green"></i> 材料</b> <%= @post.amount %>
     <hr>
-
     <%= simple_format @post.material %>
   </div>
   <div class="col-md-8">
-    <b><i class="fa-solid fa-mitten"></i> 作り方</b>
+    <b><i class="fa-solid fa-mitten red"></i> 作り方</b>
     <hr>
     <%= simple_format @post.recipe %>
     <hr>
-    <b><i class="fa-solid fa-bullhorn"></i> ポイント</b>
+    <b><i class="fa-solid fa-bullhorn orange"></i> ポイント</b>
     <hr>
     <%= simple_format @post.point %>
   </div>
@@ -120,5 +113,4 @@
 <% end %>
 
 <hr>
-
 <%= render "post_comments/index", post: @post, post_comment: @post_comment %>
