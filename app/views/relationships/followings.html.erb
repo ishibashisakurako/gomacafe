@@ -1,7 +1,7 @@
 <hr>
-
-<div class="text-center font-english heading"><i class="fa-solid fa-users"></i>followings</div>
-
+<div class="text-center font-english heading">
+  <i class="fa-solid fa-users pale-blue"></i> followings
+</div>
 <hr>
 <div class="row">
   <% if @users.exists? %>
@@ -26,8 +26,8 @@
         </div>
       </div>
     <% end %>
-    <% else %>
-      <div class="col-12 text-center">まだ誰もフォローしていません。
-      </div>
+  <% else %>
+    <div class="col-12 text-center">まだ誰もフォローしていません。
+    </div>
   <% end %>
 </div>

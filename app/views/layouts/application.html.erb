@@ -14,14 +14,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+IT+Moderna:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
   
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <header>
       <%= render "layouts/navigation" %>
     </header>
-    <main class="container mt-4">
+    
+    <main class="container flex-grow-1 mt-4 mb-5">
       <%= render "layouts/flash_messages" %>
       <%= yield %>
       <%#= debug params %>
     </main>
+    <%= render "layouts/footer" %>
   </body>
 </html>

@@ -6,9 +6,11 @@
 
 <%= render 'columns/form', columns: @columns %>
 <div class="mt-2 col-md-8 offset-md-2">
-  <% if @column.user == current_user %>
-    <%= link_to column_path(@column), method: :delete, class: "btn btn-outline-danger", data: {confirm: "投稿を削除しますか？"} do %>
-      <i class="fa-solid fa-trash"></i>
+  <div class="d-flex">
+    <% if @column.user == current_user %>
+      <%= link_to column_path(@column), method: :delete, class: "btn btn-outline-danger", data: {confirm: "投稿を削除しますか？"} do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

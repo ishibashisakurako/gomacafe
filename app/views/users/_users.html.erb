@@ -1,10 +1,9 @@
+<div class="row">
+  <div class="col-md-8 offset-2">
+
 <table class="table table-hover table-inverse">
 <!--検索対象モデルがUserの時 -->
   <tbody id="search_data">
-    <tr>
-      <th>ユーザー名</th>
-      <th>自己紹介</th>
-    </tr>
 
     <% users.each do |user| %>
     <tr data-href="<%= user_path(user) %>">
@@ -24,3 +23,6 @@
     window.location.href = url
   })
 </script>
+
+</div>
+</div>

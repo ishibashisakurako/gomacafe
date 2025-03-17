@@ -1,15 +1,21 @@
-<hr>
-<div class="text-center font-english heading">
-  <i class="fa-regular fa-calendar-days blue"></i> Calendar
+<div class="row">
+  <div class="col-md-4 offset-md-4 text-center">
+    <hr>
+    <div class="font-english heading">
+      <i class="fa-regular fa-calendar-days blue"></i> Calendar Edit
+    </div>
+    <hr>
+    <%= form_with model: @expiration do |f| %>
+      <p><%= f.text_field :name %></p>
+      <p><%= f.date_field :start_time, value: params[:date] %></p>
+      <div class="f-flex">
+      <%= f.button class:"btn btn-outline-success" do %>
+        <i class="fa-solid fa-check"></i>
+      <% end %>
+    <% end %>
+    <%= link_to expiration_path(@expiration), class: "btn btn-outline-danger", method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+      <i class="fa-solid fa-trash-can"></i>
+    <% end %>
+    </div>
+  </div>
 </div>
-<hr>
-
-<%= form_with model: @expiration do |f| %>
-  <%= f.text_field :name %>
-  <%= f.date_field :start_time, value: params[:date] %>
-  <%= f.submit %>
-<% end %>
-
-<%= link_to expiration_path(@expiration), class: "btn btn-outline-danger", method: :delete, data: { confirm: "本当に削除しますか？" } do %>
-  <i class="fa-solid fa-trash-can"></i>
-<% end %>

@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     @posts = Post.publish_posts.page(params[:page]) #全てを表示する
     @genres = Genre.all
     @others = Other.all
+    @user = current_user
   end
 
   def show

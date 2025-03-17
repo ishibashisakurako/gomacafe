@@ -15,7 +15,9 @@
       <p>自分のレシピを記録したり、コラムを書いたり、賞味期限の管理ができます！</p>
       <p>誰かと繋がらなくても楽しめる、そんなHPです！</p>
       <% if user_signed_in? %> 
-        <%= link_to "マイページへ", user_path(current_user) %>
+        <%= link_to user_path(current_user), class: "side" do %>
+          <i class="fa-solid fa-user pale-blue"></i> My page
+        <% end %>
         <% else %>
         <hr>
         <%= link_to "新規登録", new_user_registration_path, class:"btn btn-outline-success" %>

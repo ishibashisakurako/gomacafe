@@ -10,11 +10,13 @@
   <p>使い切った食材は削除することによって、まだあるのに買ってしまった..ということも防げます！</p>
   <p>フードロスを減らしていきましょう！</p>
 </div>
-
+<hr>
 <%= month_calendar(events: @expirations) do |date, expirations| %>
   <%= link_to date.day, new_expiration_path(date: date) %><br>
   <% expirations.each do |expiration| %>
-    <%= link_to expiration.name, edit_expiration_path(expiration) %>
+    <ul>
+      <li><%= link_to expiration.name, edit_expiration_path(expiration), class: "link" %></li>
+    </ul>
   <% end %>
 <% end %>
 <div class="mb-5"></div>

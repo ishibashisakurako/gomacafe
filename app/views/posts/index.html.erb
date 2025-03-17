@@ -1,49 +1,63 @@
 <hr>
 <div class="row">
-  <div class="col-md-12 mb-5 text-center font-english heading">
-    <i class="fas fa-tag green"></i> Tag
-    <hr>
-    <div class="space">
-      <% @genres.each do |genre| %>
-        <%= link_to genre.name, genre_path(genre), class: "tag" %>
-      <% end %>
+  <div class="col-md-3 text-center">
+    <div class="font-english heading">
+      <i class="fas fa-tag green"></i> Tag
+      <hr>
+      <div>
+        <% @genres.each do |genre| %>
+          <%= link_to genre.name, genre_path(genre), class: "tag d-inline-block" %>
+        <% end %>
+      </div>
+      <div>
+        <% @others.each do |other| %>
+          <%= link_to other.name, other_path(other), class: "tag d-inline-block" %>
+        <% end %>
+      </div>
     </div>
-    <div>
-      <% @others.each do |other| %>
-        <%= link_to other.name, other_path(other), class: "tag" %>
+
+    <div class="font-english heading mt-5">
+      <hr>
+      <i class="fa-solid fa-paperclip green"></i> Link
+    </div>
+    <hr>
+    <%= link_to new_post_path, class: "side" do %>
+      <i class="fa-solid fa-wand-magic-sparkles yellow"></i> レシピを投稿する
+    <% end %>
+    <hr>
+    <%= link_to user_favorite_path(current_user), class: "side" do %>
+      <i class="fa fa-heart favorite-btn"></i> お気に入りレシピ一覧
+    <% end %>
+  </div>
+
+  <div class="col-md-9">
+    <div class="text-center font-english heading">
+      <i class="fa-solid fa-mug-hot brown"></i> Recipe
+    </div>  
+    <hr>
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="card shadow mb-5">
+            <%= link_to post_path(post) do %>
+              <%= image_tag post.get_image, style: "width:100%;" %>
+            <% end %>
+            <div class="card-body">
+              <div class="text-center">
+                <b><%= post.title %></b>
+              </div>
+              <div class="mb-1">
+                <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %>
+                <%= post.user.name %>さん
+              </div>
+              <div class="text-right">
+                <i class="fa-solid fa-heart favorite-btn" style="font-size:32px;"></i>
+                <%= post.favorites.count %>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
-</div>
-
-  <hr>
-  <div class="text-center font-english heading">
-    <i class="fa-solid fa-mug-hot brown"></i> Recipe
-  </div>  
-  <hr>
-    <div class="row">
-
-  <% @posts.each do |post| %>
-
-    <div class="col-lg-3 col-md-4 col-sm-6">
-      <div class="card shadow mb-5">
-        <%= link_to post_path(post) do %>
-          <%= image_tag post.get_image, style: "width:100%;" %>
-        <% end %>
-        <div class="card-body">
-          <div class="text-center">
-            <b><%= post.title %></b>
-          </div>
-          <div class="mb-1">
-            <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %>
-            <%= post.user.name %>さん
-          </div>
-          <div class="text-right">
-            <i class="fa-solid fa-heart favorite-btn" style="font-size:32px;"></i>
-            <%= post.favorites.count %>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
 </div>

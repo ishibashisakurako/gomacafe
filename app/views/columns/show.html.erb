@@ -10,10 +10,16 @@
       <%= link_to user_path(@column.user.id), class: "side" do %>
         <%= @column.user.name %>
       <% end %>
+
+      <div class="top"></div>
       <hr>
       <div class="font-english heading">
         <i class="fa-solid fa-paperclip green"></i> Link
       </div>
+      <hr>
+      <%= link_to columns_path, class: "side" do %>
+        <i class="fa-solid fa-book brown"></i> みんなのコラム一覧
+      <% end %>
       <hr>
       <%= link_to user_columns_path(@user), class: "side" do %>
         <i class="fa-solid fa-user pale-blue"></i> 自分のコラム一覧

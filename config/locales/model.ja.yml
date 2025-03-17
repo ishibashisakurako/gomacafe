@@ -5,3 +5,6 @@ ja:
         title: タイトル
         material: 材料
         recipe: 作り方
+      column:
+        title: タイトル
+        body: コラムの内容

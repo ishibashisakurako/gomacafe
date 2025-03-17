@@ -10,11 +10,18 @@
         <p class="text-center">コラムの内容</p>
         <p><%= f.rich_text_area :body, rows: 30 %></p>
         <hr>
-        <p class="text-center">ステータス</p> 
-        <%= f.select :status, Column.statuses.keys.map { |k| [I18n.t("enums.column.status.#{k}"), k] }, {}, { class: "form-control mb-2 w-25" } %>
-        <div class="mt-2">
+        <p class="text-center">ステータス</p>
+        <div class="d-flex justify-content-center">
+          <%= f.select :status, Column.statuses.keys.map { |k| [I18n.t("enums.column.status.#{k}"), k] }, {}, { class: "form-control mb-2 w-25" } %>
+        </div>
+        <div class="mt-2 d-flex justify-content-center">
           <%= f.button class:"btn btn-outline-success" do %>
             <i class="fa-solid fa-check"></i>
+          <% end %>
+          <% if @column.user == current_user && (params[:action] == "edit" || params[:action] == "update") %>
+            <%= link_to column_path(@column), method: :delete, class: "btn btn-outline-danger", data: {confirm: "投稿を削除しますか？"} do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
           <% end %>
         </div>
       <% end %>

@@ -1,24 +1,77 @@
 <hr>
-<div class="text-center font-english heading">
-  <i class="fa-solid fa-feather green"></i> <%= @user.name %>'s columns</div>
-<hr>
-
-<% @columns.each do |column| %>
-
-  <%= link_to column.title, column_path(column) %>
-
-  <% if column.status == 'publish' %>
-    <div class="badge badge-primary">
-      <%= column.status_i18n %>
+<div class="row">
+  <div class="col-md-3 text-center">
+    <div class="mozi">
+      <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle image" %>
+      <p>
+        <%= @user.name %>
+        <% if current_user != @user %>
+          <%= render "relationships/btn", user: @user, options: { class: ""} %>
+          <% else %>
+          <%= link_to edit_user_path(@user), class: "edit" do %>
+            <i class="fa-solid fa-gear"></i>
+          <% end %>
+        <% end %>
+      </p>
     </div>
-  <% elsif column.status == 'secret'%>
-    <div class="badge badge-success">
-      <%= column.status_i18n %>
+    <hr>
+    <p>フォロー中
+    <%= link_to @user.followings.count, user_followings_path(@user) %>
+    フォロワー
+    <%= link_to @user.followers.count, user_followers_path(@user) %></p>
+    <hr>
+    <%= simple_format @user.introduction %>
+    <hr>
+    <div class="text-center"> 
+      <div class="font-english heading top">
+        <i class="fa-solid fa-paperclip green"></i> Link
+      </div>
+      <% if user_signed_in? && @user == current_user %>
+        <hr>
+        <%= link_to user_path(@user), class: "side" do %>
+          <i class="fa-solid fa-user pale-blue"></i> マイページ
+        <% end %>
+        <hr>
+        <%= link_to user_favorite_path(@user), class: "side" do %>
+          <i class="fa fa-heart favorite-btn"></i> お気に入りレシピ一覧
+        <% end %>
+      <% end %>
+      <hr>
+      <% if user_signed_in? && @user == current_user %>
+        <%= link_to expirations_path, class: "side" do %>
+          <i class="fa-solid fa-calendar-days blue"></i> 賞味期限管理
+        <% end %>
+      <% end %>
     </div>
-  <% else %>
-    <div class="badge badge-secondary">
-      <%= column.status_i18n %>
+  </div>
+
+  <div class="col-md-7 offset-md-1">
+    <div class="text-center font-english heading">
+      <i class="fa-solid fa-feather green"></i> <%= @user.name %>'s columns
     </div>
-  <% end %>
-  <hr>
-<% end %>
+    <hr>
+    
+    <% @columns.each do |column| %>
+      <div class="text-center">
+        <%= link_to column.title, column_path(column), class: "link" %>
+      </div>
+      <div class="text-right">
+        <% if column.status == 'publish' %>
+          <div class="badge badge-primary">
+            <%= column.status_i18n %>
+          </div>
+        <% elsif column.status == 'secret'%>
+          <div class="badge badge-success">
+            <%= column.status_i18n %>
+          </div>
+        <% else %>
+          <div class="badge badge-secondary">
+            <%= column.status_i18n %>
+          </div>
+        <% end %>
+        <%= column.created_at.strftime('%Y/%m/%d') %>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>

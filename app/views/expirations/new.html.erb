@@ -1,10 +1,19 @@
-<hr>
-<div class="text-center font-english heading">
-  <i class="fa-regular fa-calendar-days blue"></i> Calendar
+<div class="row">
+  <div class="col-md-6 offset-md-3 text-center">
+    <hr>
+    <div class="text-center font-english heading">
+      <i class="fa-regular fa-calendar-days blue"></i> Calendar Registration
+    </div>
+    <hr>
+    <%= form_with model: @expiration do |f| %>
+      <p><%= f.text_field :name %></p>
+      <p><%= f.date_field :start_time, value: params[:date] %></p>
+      <%= link_to expirations_path, class:"btn btn-outline-info" do %>
+        <i class="fa-solid fa-calendar"></i>
+      <% end %>
+      <%= f.button class:"btn btn-outline-success" do %>
+        <i class="fa-solid fa-check"></i>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-<hr>
-<%= form_with model: @expiration do |f| %>
-  <%= f.text_field :name %>
-  <%= f.date_field :start_time, value: params[:date] %>
-  <%= f.submit %>
-<% end %>
