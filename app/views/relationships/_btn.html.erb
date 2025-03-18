@@ -1,7 +1,11 @@
 <% if current_user != user %> <%# 現在のuserと表示対象のuserが異なる場合(自分にボタンはいらないから) %>
   <% if current_user.following?(user) %> <%# current_user(現在のuser)は対象userを既にフォローしているか？ %>
-    <%= link_to "Unfollow", user_relationships_path(user.id), method: :delete, class: options[:class].presence || "btn btn-outline-danger", data: {confirm: "フォローを外しますか？"} %>
+    <%= link_to user_relationships_path(user.id), method: :delete, class: options[:class].presence || "btn btn-outline-danger", data: {confirm: "フォローを外しますか？"} do %>
+      <i class="fa-solid fa-user-minus"></i>
+    <% end %>
   <% else %> <%# フォローしてない場合　ボタンの色を変える %>
-    <%= link_to "Follow", user_relationships_path(user.id), method: :post, class: options[:class].presence || "btn btn-outline-success" %>
+    <%= link_to user_relationships_path(user.id), method: :post, class: options[:class].presence || "btn btn-outline-success" do %>
+      <i class="fa-solid fa-user-plus"></i>
+    <% end %>
   <% end %>
 <% end %>

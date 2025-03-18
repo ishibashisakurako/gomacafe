@@ -1,12 +1,14 @@
+<hr>
+<b><i class="fa-solid fa-comment water-blue"></i> コメント </b><%= post.post_comments.count %>件
 <div class="row">
-  <div class="col-md-10 offset-1">
-    <b><i class="fa-solid fa-comment water-blue"></i> コメント </b><%= post.post_comments.count %>件
+  <div class="col-md-6">
     <% post.post_comments.each do |post_comment| %>
       <table class="table">
         <tr> 
           <td>
-            <%= image_tag post_comment.user.get_profile_image(70,70), class: "rounded-circle" %>
-            <%= post_comment.user.name %></b>さん
+            <%= link_to user_path(@user) do %>
+              <%= image_tag post_comment.user.get_profile_image(70,70), class: "rounded-circle" %>
+            <% end %>
           </td>
           <td>
             <%= simple_format post_comment.comment %>
@@ -25,15 +27,15 @@
       </table>
     <% end %>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-md-8 offset-2">
+  <div class="col-md-6">
     <%= form_with model: [post, post_comment] do |f| %>
-      <%= f.text_area :comment, rows: '5', placeholder: "思いやりのあるコメントを心掛けましょう" , size: "80×20" %>
-    <%= f.button class: "btn btn-outline-success mb-5" do %>
-      <i class="fa-solid fa-check"></i>
-    <% end %>
+      <%= f.text_area :comment, class: "form-control w-100", rows: '5', placeholder: "思いやりのあるコメントを心掛けましょう" %>
+      <div class="text-right">
+        <%= f.button class: "btn btn-outline-success mb-5" do %>
+          <i class="fa-solid fa-check"></i>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
   def columns
     @user = User.find(params[:user_id])
-    @columns = @user.columns
+    @columns = @user.columns.where(status: "publish")
   end
 
   private

@@ -1,25 +1,41 @@
-<%= render 'layouts/error_messages', model: @post %>
 <hr>
-<div class="text-center mozi">
+<%= render 'layouts/error_messages', model: @post %>
+
+<div class="mozi text-center">
   <i class="fa-solid fa-mug-hot brown"></i> <%= @post.title %>
 </div>
 <hr>
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-6">
     <% if @post.image.attached? %>
-      <%= image_tag @post.image, style: "width:300px; height:300px;" %>
+      <%= image_tag @post.image, style: "width:100%;" %>
     <% else %>
-      <%= image_tag 'noimage', style: "width:300px; height:300px;" %>
+      <%= image_tag 'noimage', style: "width:100%;" %>
     <% end %>
   </div>
-  <div class="col-md-8">
-    <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
-    <%= link_to @user.name, user_path(@user.id) %>さんのレシピ
-    <%= render "relationships/btn", user: @user, options: { class: ""} %>
+
+  <div class="col-md-6">
+  
+    <div class="d-flex align-items-center">
+      <%= link_to user_path(@user.id), class: "side d-flex align-items-center" do %>
+        <%= image_tag @user.get_profile_image(100,100), class: "mr-2 rounded-circle" %>
+        <b><%= @user.name %></b>
+      <% end %>
+      <div class="ml-auto">
+        <%= @post.created_at.strftime('%Y/%m/%d') %>
+      </div>
+    </div>
+
+    <hr>
+    <b><i class="fa-solid fa-check-double green"></i> レシピ概要</b>
+    <hr>
+    <%= simple_format @post.introduction %>
     <hr>
     <div class="d-flex">
-      <b><i class="fa-solid fa-check-double green"></i> レシピ概要</b>
-      <b class="ml-5"><i class="fa-solid fa-flag yellow"></i> 簡単レベル </b>
+      <div class="mr-5">
+        <i class="fa-solid fa-flag yellow"></i> 
+        <b>簡単レベル</b>
+      </div>
       <div id="star_<%= @post.id %>"></div>
       <script>
         $(document).on('turbolinks:load', function() {
@@ -38,8 +54,6 @@
         });
       </script>
     </div>
-    <hr>
-    <%= simple_format @post.introduction %>
     <hr>   
     <div class="d-flex">
       <% if @post.favorited_by?(current_user) %>
@@ -65,7 +79,6 @@
           </div>
         </div>
       <% end %>
-
       <% if @post.genre || @post.other %>
         <div class="d-flex align-items-end">
           <div class="ml-5"></div>
@@ -81,15 +94,15 @@
   </div>
 </div>
 
-<hr>
-
 <div class="row">
   <div class="col-md-4">
-    <b><i class="fa-solid fa-seedling green"></i> 材料</b> <%= @post.amount %>
+    <hr>
+    <b><i class="fa-solid fa-seedling green"></i> 材料 /</b> <%= @post.amount %>
     <hr>
     <%= simple_format @post.material %>
   </div>
   <div class="col-md-8">
+    <hr>
     <b><i class="fa-solid fa-mitten red"></i> 作り方</b>
     <hr>
     <%= simple_format @post.recipe %>
@@ -97,20 +110,16 @@
     <b><i class="fa-solid fa-bullhorn orange"></i> ポイント</b>
     <hr>
     <%= simple_format @post.point %>
+    <% if @user == current_user %>
+      <div class="d-flex justify-content-end">
+        <%= link_to edit_post_path(@post), class: "btn btn-outline-success mr-2" do %>
+          <i class="fa-solid fa-gear"></i>
+        <% end %>
+        <%= link_to post_path(@post.id), class: "btn btn-outline-danger", method: :delete, data: {confirm: "投稿を削除しますか？"} do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<% if @user == current_user %>
-  <div class="d-flex justify-content-end">
-    <%= link_to edit_post_path(@post), class: "btn btn-outline-success mr-2" do %>
-      <i class="fa-solid fa-gear"></i>
-    <% end %>
-
-    <%= link_to post_path(@post.id), class: "btn btn-outline-danger", method: :delete, data: {confirm: "投稿を削除しますか？"} do %>
-      <i class="fa-solid fa-trash-can"></i>
-    <% end %>
-  </div>
-<% end %>
-
-<hr>
 <%= render "post_comments/index", post: @post, post_comment: @post_comment %>

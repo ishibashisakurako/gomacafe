@@ -49,11 +49,19 @@
     <div class="text-center font-english heading">
       <i class="fa-solid fa-mug-hot brown"></i> Recipe List
     </div>
-    <table class="table">
-      <% @posts.each do |post| %>
-        <tr>
-          <td>
-            <p><b><%= post.title %></b></p>
+    <hr>
+
+    <% @posts.each do |post| %>
+      <div class="row">
+        <div class="col-md-4">
+          <%= link_to post_path(post), class: "d-block" do %>
+            <%= image_tag post.get_image, style: "width:100%;" %>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <div class="d-flex align-items-center justify-content-center gap-2 w-100">
+            <b class="text-center w-100"><%= post.title %></b>
+            <hr>
             <% if post.status == 'publish' %>
               <div class="badge badge-primary">
                 <%= post.status_i18n %>
@@ -67,20 +75,13 @@
                 <%= post.status_i18n %>
               </div>
             <% end %>
-          </td>
-          <td>
-            <%= link_to post_path(post) do %>
-              <%= image_tag post.get_image, style: "width:200px; height:200px;" %>
-            <% end %>
-          </td>
-          <td>
-            <div class="mx-auto">
-              <%= simple_format post.introduction %>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+          </div>
+          <hr>
+          <%= simple_format post.introduction %>
+        </div>
+      </div>
+      <hr>
+    <% end %>
   </div>
 </div>
 

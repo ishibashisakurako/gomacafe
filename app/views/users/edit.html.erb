@@ -20,7 +20,9 @@
             自己紹介
           </label>
           <%= f.text_area :introduction, rows: 5, class: "form-control mb-2", placeholder: "簡単な自己紹介を30文字程度で書きましょう！" %></p>
-          <%= f.submit "変更を保存" , class: "btn btn-outline-success" %>
+          <%= f.button class: "btn btn-outline-success" do %>
+            <i class="fa-solid fa-check"></i>
+          <% end %>
           <%= link_to user_path(@user), method: :delete, class: "btn btn-outline-danger", data: {confirm: "退会しますか？"} do %>
             <i class="fa-solid fa-trash"></i>
           <% end %>
