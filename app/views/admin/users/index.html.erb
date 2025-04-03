@@ -1,22 +1,20 @@
 <hr>
-
-<h5><b><div class="text-center">全ユーザー一覧</div></b></h5>
-
-<table class="table">
-
-  <tr>
-    <th>プロフィール画像</th>
-    <th>ユーザー名</th>
-    <th>メールアドレス</th>
-  </tr>
-
-
+<div class="col-md-10 offset-md-1">
+  <div class="text-center heading font-english">
+    <i class="fa-solid fa-users pale-blue"></i> All Users
+  </div>
+  <table class="table">
+    <tr>
+      <th>image</th>
+      <th>User Name</th>
+      <th>adress</th>
+    </tr>
     <% @users.each do |user| %>
-  <tr>
-    <td><%= image_tag user.get_profile_image(100,100) %></td>
-    <td><%= link_to user.name, admin_user_path(user) %></td>
-    <td><%= user.email %></td>
-  </tr>
-    <% end %>
-
-</table>
+    <tr>
+      <td><%= image_tag user.get_profile_image(100,100) %></td>
+      <td><%= link_to user.name, admin_user_path(user) %></td>
+      <td><%= user.email %></td>
+    </tr>
+      <% end %>
+  </table>
+</div>

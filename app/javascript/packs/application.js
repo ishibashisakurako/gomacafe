@@ -28,3 +28,38 @@ window.raty = function(elem,opt) {
 require("trix")
 require("@rails/actiontext")
 
+document.addEventListener('DOMContentLoaded', () => {
+    const loadingAreaGrey = document.querySelector('#loading');
+    if (loadingAreaGrey) {
+        loadingAreaGrey.animate(
+            {
+                opacity: [1, 0]
+            },
+            {
+                duration: 2000,
+                delay: 1200,
+                easing: 'ease',
+                fill: 'forwards',
+            }
+        );
+        setTimeout(() => {
+            loadingAreaGrey.style.visibility = 'hidden';
+        }, 3200);
+    }
+});
+
+document.addEventListener("turbolinks:load", () => {
+    const items = document.querySelector('.img-item').children;
+    console.log(items);
+    for (let i = 0; i < items.length; i++) {
+        const keyframes = {
+            opacity: [0, 1]
+        };
+        const options = {
+            duration: 900,
+            delay: i * 1000,
+            fill: 'forwards',
+        };
+        items[i].animate(keyframes, options);
+    }
+})

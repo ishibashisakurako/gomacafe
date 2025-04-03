@@ -1,28 +1,37 @@
+<div id="loading">
+  <p>Loading..</p>
+</div>
 <div class="row">
   <div class="col-md">
     <div class="text-center">
       <%= image_tag 'logo.png', style: "width:200px;" %>
     </div>
     <hr>
-    <div class="d-flex justify-content-center">
-      <%= image_tag 'cookie.jpg', style: "width:300px; height:300px;", class: "rounded-circle mx-1" %>
-      <%= image_tag 'ahunun.jpg', style: "width:300px; height:300px;", class: "rounded-circle mx-1" %>
-      <%= image_tag 'syu.jpg', style: "width:300px; height:300px;", class: "rounded-circle mx-1" %>
+    <div class="d-flex justify-content-center img-item">
+      <%= image_tag 'cookie.jpg', style: "width:300px; height:300px; opacity:0;", class: "rounded-circle mx-1" %>
+      <%= image_tag 'ahunun.jpg', style: "width:300px; height:300px; opacity:0;", class: "rounded-circle mx-1" %>
+      <%= image_tag 'syu.jpg', style: "width:300px; height:300px; opacity:0;", class: "rounded-circle mx-1" %>
     </div>
     <hr>
     <div class="text-center mb-3">
       <p>gomacafeで一緒にお菓子作りを楽しみましょう！</p>
       <p>自分のレシピを記録したり、コラムを書いたり、賞味期限の管理ができます！</p>
       <p>誰かと繋がらなくても楽しめる、そんなHPです！</p>
+      <hr>
       <% if user_signed_in? %> 
-        <%= link_to user_path(current_user), class: "side" do %>
-          <i class="fa-solid fa-user pale-blue"></i> My page
+        <%= link_to user_path(current_user), class: "side font-english mozi" do %>
+          <p><i class="fa-solid fa-user pale-blue"></i> My page</p>
         <% end %>
         <% else %>
-        <hr>
-        <%= link_to "新規登録", new_user_registration_path, class:"btn btn-outline-success" %>
-        <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-info" %>
-        <%= link_to "ゲストログイン", guest_login_path, method: :post, class:"btn btn-outline-primary" %>
+        <%= link_to new_user_registration_path, class:"side font-english mozi" do %>
+          <p><i class="fa-solid fa-user-plus green"></i> New User</p>
+        <% end %>
+        <%= link_to new_user_session_path, class:"side font-english mozi" do %>
+          <p><i class="fa-solid fa-user-check pale-blue"></i> Log in</p>
+        <% end %>
+        <%= link_to guest_login_path, method: :post, class:"side font-english mozi" do %>
+          <p><i class="fa-solid fa-robot orange"></i> Guest Log In</p>
+        <% end %>
       <% end %>
     </div>
   </div>

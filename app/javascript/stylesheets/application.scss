@@ -16,7 +16,6 @@
   font-size: 2rem;
 }
 
-
 .tag {
   color: #000;
   background-color: #faf7f0;
@@ -64,6 +63,19 @@ ul {
 }
 
 .calendar-title {
+  font-size: 2rem;
+}
+
+#loading {
+  background-color: #edd0ca;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+}
+
+#loading {
   font-size: 2rem;
 }
 

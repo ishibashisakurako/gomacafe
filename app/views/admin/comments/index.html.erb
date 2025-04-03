@@ -1,30 +1,29 @@
 <hr>
-<div class="text-center"><h5><b>コメント管理</b></h5></div>
-
-
+<div class="text-center heading font-english">
+  <i class="fa-solid fa-comment green"></i> Commnent
+</div>
 <table class=table>
   <tr>
     <th></th>
-    <th>ユーザー名</th>
-    <th>コメント内容</th>
+    <th>User Name</th>
+    <th>Comment</th>
     <th></th>
   </tr>
-
-<% @post_comments.each do |post_comment| %>
-
-  <tr>
-    <td>
-      <%= image_tag post_comment.user.get_profile_image(70,70), class: "rounded-circle" %>
-    <td>
-      <%= post_comment.user.name %>
-    </td>
-    <td>
-      <%= post_comment.comment %>
-    </td>
-    <td>
-      <%= link_to "削除", admin_comment_path(post_comment), method: :delete, data: {confirm: "コメントを削除しますか？"} %>
-    </td>
-  </tr>
-<% end%>
-
+  <% @post_comments.each do |post_comment| %>
+    <tr>
+      <td>
+        <%= image_tag post_comment.user.get_profile_image(70,70), class: "rounded-circle" %>
+      <td>
+        <%= post_comment.user.name %>
+      </td>
+      <td>
+        <%= post_comment.comment %>
+      </td>
+      <td>
+        <%= link_to admin_comment_path(post_comment), class: "btn btn-outline-danger", method: :delete, data: {confirm: "コメントを削除しますか？"} do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
 </table>

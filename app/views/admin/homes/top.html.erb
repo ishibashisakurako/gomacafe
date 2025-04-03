@@ -1,7 +1,13 @@
 <hr>
-<div class="text-center"><h5>管理者機能top</h5>
-<hr>
-<%= link_to "ユーザー管理", admin_users_path, class: "btn btn-outline-info" %>
-<%= link_to "コメント管理", admin_comments_path, class: "btn btn-outline-success" %>
-
+<div class="text-center">
+  <div class="heading font-english">
+    <i class="fa-solid fa-user-gear pale-blue"></i> Admin Top
+  </div>
+  <hr>
+  <%= link_to admin_users_path, class: "btn btn-outline-info" do %>
+    <i class="fa-solid fa-user-large"></i> User
+  <% end %>
+  <%= link_to admin_comments_path, class: "btn btn-outline-success" do %>
+    <i class="fa-solid fa-comment"></i> Comment
+  <% end %>
 </div>
