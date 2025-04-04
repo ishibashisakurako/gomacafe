@@ -28,8 +28,11 @@ window.raty = function(elem,opt) {
 require("trix")
 require("@rails/actiontext")
 
+// topページ
+// loading
 document.addEventListener('DOMContentLoaded', () => {
     const loadingAreaGrey = document.querySelector('#loading');
+    const loadingText = document.querySelector('#loading p');
     if (loadingAreaGrey) {
         loadingAreaGrey.animate(
             {
@@ -45,19 +48,32 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             loadingAreaGrey.style.visibility = 'hidden';
         }, 3200);
+        {
+            loadingText.animate(
+                {
+                    opacity: [1, 0],
+                },
+                {
+                    duration: 1200,
+                    easing: 'ease',
+                    fill: 'forwards',
+                }
+            );
+        }
     }
 });
 
+// img
 document.addEventListener("turbolinks:load", () => {
-    const items = document.querySelector('.img-item').children;
+    const items = document.querySelectorAll('.img-item');
     console.log(items);
     for (let i = 0; i < items.length; i++) {
         const keyframes = {
             opacity: [0, 1]
         };
         const options = {
-            duration: 900,
-            delay: i * 1000,
+            duration: 2400,
+            delay: i * 800,
             fill: 'forwards',
         };
         items[i].animate(keyframes, options);

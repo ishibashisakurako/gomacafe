@@ -1,38 +1,38 @@
 <div id="loading">
-  <p>Loading..</p>
+  <p class="font-english">Loading..</p>
 </div>
 <div class="row">
   <div class="col-md">
     <div class="text-center">
-      <%= image_tag 'logo.png', style: "width:200px;" %>
+      <%= image_tag 'top.png', style: "width:200px; height:70px;" %>
     </div>
     <hr>
-    <div class="d-flex justify-content-center img-item">
-      <%= image_tag 'cookie.jpg', style: "width:300px; height:300px; opacity:0;", class: "rounded-circle mx-1" %>
-      <%= image_tag 'ahunun.jpg', style: "width:300px; height:300px; opacity:0;", class: "rounded-circle mx-1" %>
-      <%= image_tag 'syu.jpg', style: "width:300px; height:300px; opacity:0;", class: "rounded-circle mx-1" %>
+    <div class="d-flex justify-content-center">
+      <%= image_tag 'cookie.jpg', style: "width:300px; height:300px; opacity:0;", class: "rounded-circle mx-1 img-item img-left" %>
+      <%= image_tag 'ahunun.jpg', style: "width:300px; height:300px; opacity:0;", class: "rounded-circle mx-1 img-item img-center" %>
+      <%= image_tag 'syu.jpg', style: "width:300px; height:300px; opacity:0;", class: "rounded-circle mx-1 img-item img-right" %>
     </div>
     <hr>
-    <div class="text-center mb-3">
-      <p>gomacafeで一緒にお菓子作りを楽しみましょう！</p>
-      <p>自分のレシピを記録したり、コラムを書いたり、賞味期限の管理ができます！</p>
-      <p>誰かと繋がらなくても楽しめる、そんなHPです！</p>
-      <hr>
+    <div class="text-center d-flex justify-content-center">
       <% if user_signed_in? %> 
         <%= link_to user_path(current_user), class: "side font-english mozi" do %>
-          <p><i class="fa-solid fa-user pale-blue"></i> My page</p>
+          <i class="fa-solid fa-user pale-blue"></i> My page
         <% end %>
         <% else %>
-        <%= link_to new_user_registration_path, class:"side font-english mozi" do %>
-          <p><i class="fa-solid fa-user-plus green"></i> New User</p>
+        <%= link_to new_user_registration_path, class:"side font-english mozi mr-5" do %>
+          <i class="fa-solid fa-user-plus green"></i> New User
         <% end %>
-        <%= link_to new_user_session_path, class:"side font-english mozi" do %>
-          <p><i class="fa-solid fa-user-check pale-blue"></i> Log in</p>
+        <%= link_to new_user_session_path, class:"side font-english mozi mr-5" do %>
+          <i class="fa-solid fa-user-check pale-blue"></i> Log in
         <% end %>
         <%= link_to guest_login_path, method: :post, class:"side font-english mozi" do %>
-          <p><i class="fa-solid fa-robot orange"></i> Guest Log In</p>
+          <i class="fa-solid fa-robot orange"></i> Guest Log In
         <% end %>
       <% end %>
     </div>
+    <br>
+    <%= link_to homes_about_path, class: "text-center side font-english mozi" do %>
+      <i class="fa-solid fa-cloud red"></i> About
+    <% end %>
   </div>
 </div>

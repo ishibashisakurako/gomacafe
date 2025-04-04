@@ -38,4 +38,6 @@ Rails.application.routes.draw do
   resources :columns
 
   resources :expirations
+
+  get 'homes/about' => 'homes#about'
 end

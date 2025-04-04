@@ -9,7 +9,6 @@ class SearchesController < ApplicationController
     else
       @posts = Post.looks(params[:word])
     end
-
  
     render "/searches/search_result"
   end

@@ -66,6 +66,7 @@ ul {
   font-size: 2rem;
 }
 
+// homes/top
 #loading {
   background-color: #edd0ca;
   position: fixed;
@@ -75,8 +76,24 @@ ul {
   place-items: center;
 }
 
-#loading {
+#loading p {
   font-size: 2rem;
+}
+
+// homes/topのレスポンシブ対応
+.img-item {
+  display: inline-block;
+}
+
+/* 画面幅が768px以下のときは、中央だけ表示 */
+@media (max-width: 768px) {
+  .img-left,
+  .img-right {
+    display: none !important;
+  }
+  .img-center {
+    display: inline-block !important;
+  }
 }
 
 /* fontawesomeの色 */

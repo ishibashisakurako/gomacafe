@@ -1,20 +1,19 @@
-    <% if user_signed_in? %>
-      <div class="search_form w-50 mr-3">
-        <%= form_with url: search_path, local: true, method: :get do |f| %>
-          <div class="form-row">
-            <div class="col-md-2 offset-md-4">
-              <%= f.select :range, options_for_select([['ユーザー', 'user'], ['投稿', 'post']]), {}, {class: "form-control"} %>
-            </div>
-            <div class="col-md-5">
-              <%= f.text_field :word, placeholder: "投稿・ユーザー名で検索", class: "form-control" %>
-            </div>
-            <div class="col-md-1">
-
-              <%= button_tag type: "submit", class: "btn btn-secondary" do %>
-              <i class="fa-solid fa-magnifying-glass"></i>
-              </div>
-            </div>
-        <% end %>
-        <% end %>
+<% if user_signed_in? %>
+  <div class="search_form w-50 mr-3">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <div class="form-row">
+        <div class="col-md-2 offset-md-4">
+          <%= f.select :range, options_for_select([['User', 'user'], ['Recipe', 'post']]), {}, {class: "form-control"} %>
+        </div>
+        <div class="col-md-5">
+          <%= f.text_field :word, placeholder: "User/Recipe", class: "form-control" %>
+        </div>
+        <div class="col-md-1">
+          <%= button_tag type: "submit", class: "btn btn-secondary" do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
+        </div>
       </div>
     <% end %>
+  </div>
+<% end %>
