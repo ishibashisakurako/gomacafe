@@ -50,7 +50,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/noimage.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image.variant(gravity: :center, resize: "#{width}x#{height}^", crop: "#{width}x#{height}+0+0")
   end
 
   def self.looks(word)
@@ -66,7 +66,7 @@ class User < ApplicationRecord
     user = self.find_or_initialize_by(email: "guest@test.com")
     user.assign_attributes(
       password: SecureRandom.hex(6),
-      name: "ゲスト"
+      name: "guest"
     )
     user.save
     user

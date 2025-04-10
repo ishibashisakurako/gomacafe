@@ -41,9 +41,15 @@ SNSが苦手な方でも、レシピを記録したり、共有できるコミ�
 
 
 ## 設計書
-後ほど作成予定
+[画面遷移図](https://drive.google.com/file/d/1WTLUqBGF5zp0IWhvNNpW2PFAr26OIdHl/view?usp=sharing)
+[ER図](https://drive.google.com/file/d/1C2Rimbkw589aD0KpPG13c48XRyC97fYb/view?usp=sharing)
+[インフラ設計書](https://docs.google.com/spreadsheets/d/1hxSzSUURgQNpLKN6mRbZGrt5wCrktNt1t7ox2IneQnM/edit?usp=sharing)
+[AWS構成図](https://drive.google.com/file/d/1FkgM7TZ7BK9VJ6dexQXw9mNLYQ7Iibj-/view?usp=sharing)
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1JwQZ4gHAcMusvdxIXBg3tjh2_Ley0RklxBJ7UuoPIcI/edit?usp=sharing)
+[アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1qJGCvnncGm58rvNbTWx5aUWqWLR0EcDnkK_oTwb3il4/edit?usp=sharing)
+[WBS](https://docs.google.com/spreadsheets/d/1pRu4WSbCZLoSnBoniEykhKHYwjZT2Q6VR5RelHLxFcU/edit?usp=sharing)
+[実装機能リスト](https://docs.google.com/spreadsheets/d/1fGH0Jw3mExCu592T71lI-fLI-0jUaTo_7mYzQe20pjQ/edit?usp=sharing)
 
-​
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -53,5 +59,5 @@ SNSが苦手な方でも、レシピを記録したり、共有できるコミ�
 
 
 ## 使用素材
-著作権を考慮し、架空のデータを扱う予定です。
-なお今後、実在するデータを利用する際には、事前に著作権保持者と契約を結んだ上で利用します。
+image画像
+https://girlydrop.com/
