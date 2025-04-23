@@ -6,7 +6,7 @@
       <table class="table">
         <tr> 
           <td>
-            <%= link_to user_path(@user) do %>
+            <%= link_to user_path(post_comment.user) do %>
               <%= image_tag post_comment.user.get_profile_image(70,70), class: "rounded-circle" %>
             <% end %>
           </td>

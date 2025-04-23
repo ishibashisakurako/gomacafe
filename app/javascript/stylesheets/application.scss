@@ -136,3 +136,11 @@ ul {
 .water-blue {
   color: #c3f2ff;
 }
+
+.page-item .page-link {
+  color: gray;
+}
+.page-item.active .page-link {
+  background-color: gray;
+  border-color: gray;
+}

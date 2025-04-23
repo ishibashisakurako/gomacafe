@@ -15,13 +15,13 @@ class RelationshipsController < ApplicationController
   end
 
   def followings #フォローしているuser/indexを表示
-    user = User.find(params[:user_id]) #フォローしているuserを探してきてる
-    @users = user.followings #そのuserがフォローしているuserを表示
+    @user = User.find(params[:user_id]) #フォローしているuserを探してきてる
+    @users = @user.followings #そのuserがフォローしているuserを表示
   end
 
   def followers #フォロワーのindexを表示
-    user = User.find(params[:user_id]) #フォロワーを特定
-    @users = user.followers #フォロワーを表示
+    @user = User.find(params[:user_id]) #フォロワーを特定
+    @users = @user.followers #フォロワーを表示
   end
 
 end

@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.publish_posts.page(params[:page]) #全てを表示する
+    @posts = Post.publish_posts.order(created_at: :desc).page(params[:page]).per(1) #全てを表示する
     @genres = Genre.all
     @others = Other.all
     @user = current_user

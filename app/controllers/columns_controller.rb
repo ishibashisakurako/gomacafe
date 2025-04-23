@@ -1,4 +1,6 @@
 class ColumnsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :publish_check, only: [:show]
 
   def new
@@ -15,7 +17,7 @@ class ColumnsController < ApplicationController
   end
 
   def index
-    @columns = Column.publish_columns
+    @columns = Column.publish_columns.order(created_at: :desc).page(params[:page])
     @user = current_user
   end
 
@@ -43,6 +45,11 @@ class ColumnsController < ApplicationController
 
   def column_params
     params.require(:column).permit(:title, :body, :status)
+  end
+
+  def correct_user
+    @column = current_user.columns.find_by_id(params[:id])
+    redirect_to root_path unless @column
   end
 
   def publish_check

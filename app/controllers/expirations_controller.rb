@@ -1,4 +1,6 @@
 class ExpirationsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @expirations = current_user.expirations
@@ -42,6 +44,11 @@ class ExpirationsController < ApplicationController
   end
 
   private
+
+  def correct_user
+    @expiration = current_user.expirations.find_by_id(params[:id])
+    redirect_to root_path unless @expiration
+  end
 
   def expiration_params
     params.require(:expiration).permit(:name, :start_time)

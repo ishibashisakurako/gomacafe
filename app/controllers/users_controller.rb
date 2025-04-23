@@ -7,7 +7,11 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page])
+    if @user == current_user
+      @posts = @user.posts.order(created_at: :desc).page(params[:page])
+    else
+      @posts = @user.posts.publish_posts.order(created_at: :desc).page(params[:page])
+    end
   end
 
   def edit
@@ -50,7 +54,11 @@ class UsersController < ApplicationController
 
   def columns
     @user = User.find(params[:user_id])
-    @columns = @user.columns.where(status: "publish")
+    if @user == current_user
+      @columns = @user.columns
+    else
+      @columns = @user.columns.publish_columns
+    end
   end
 
   private

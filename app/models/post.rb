@@ -32,9 +32,9 @@ class Post < ApplicationRecord
 
     def self.looks(word)
       if word
-        Post.where(['title LIKE ?', "%#{word}%"])
+        Post.publish_posts.where(['title LIKE ?', "%#{word}%"])
       else
-        @post = Post.all
+        Post.publish_posts
       end
     end
 

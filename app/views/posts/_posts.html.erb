@@ -16,9 +16,11 @@
 </table>
 
 <script>
-  $("#search_data").on("click", (e) => {
-    const target = $(e.target).parent()
-    const url = target.data("href")
-    window.location.href = url
+  document.addEventListener('turbolinks:load', () => {
+    $("#search_data").on("click", (e) => {
+      const target = $(e.target).parent()
+      const url = target.data("href")
+      window.location.href = url
+    })
   })
 </script>
