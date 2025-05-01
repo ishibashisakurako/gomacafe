@@ -41,14 +41,13 @@ SNSが苦手な方でも、レシピを記録したり、共有できるコミ�
 
 
 ## 設計書
-[画面遷移図](https://drive.google.com/file/d/1WTLUqBGF5zp0IWhvNNpW2PFAr26OIdHl/view?usp=sharing)
-[ER図](https://drive.google.com/file/d/1C2Rimbkw589aD0KpPG13c48XRyC97fYb/view?usp=sharing)
-[インフラ設計書](https://docs.google.com/spreadsheets/d/1hxSzSUURgQNpLKN6mRbZGrt5wCrktNt1t7ox2IneQnM/edit?usp=sharing)
-[AWS構成図](https://drive.google.com/file/d/1FkgM7TZ7BK9VJ6dexQXw9mNLYQ7Iibj-/view?usp=sharing)
-[テーブル定義書](https://docs.google.com/spreadsheets/d/1JwQZ4gHAcMusvdxIXBg3tjh2_Ley0RklxBJ7UuoPIcI/edit?usp=sharing)
-[アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1qJGCvnncGm58rvNbTWx5aUWqWLR0EcDnkK_oTwb3il4/edit?usp=sharing)
-[WBS](https://docs.google.com/spreadsheets/d/1pRu4WSbCZLoSnBoniEykhKHYwjZT2Q6VR5RelHLxFcU/edit?usp=sharing)
-[実装機能リスト](https://docs.google.com/spreadsheets/d/1fGH0Jw3mExCu592T71lI-fLI-0jUaTo_7mYzQe20pjQ/edit?usp=sharing)
+[画面遷移図](https://drive.google.com/file/d/14B0g1hylmgKtsOcRbj47PhWvAXPTG9EX/view?usp=sharing)
+[ER図](https://drive.google.com/file/d/1GOTa6X2iycgH5CQLLpEaYEKQtGvNdGKL/view?usp=sharing)
+[インフラ設計書](https://docs.google.com/spreadsheets/d/1Za4Z-g-yCP3DvUDB4w86Niv2YeyzKaRU7tb9Mm9mSI8/edit?usp=sharing)
+[AWS構成図](https://drive.google.com/file/d/1An4sqWMi3BcxFHwqO2FFX3twEidzEOy2/view?usp=sharing)
+[テーブル定義書](https://docs.google.com/spreadsheets/d/16tH0CWZRDj3X5mThVbm5KTZinXJOxjCkpvW1fTlymfw/edit?usp=sharing)
+[アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1eIuq0p2lAgz1ermUkWeoF8dXhAGcdMycjCvQTTdiflY/edit?usp=sharing)
+[WBS](https://docs.google.com/spreadsheets/d/1Zw8TZEIJoH3NSTUZCXk-psIxlmzgK26WZ1pM5AG64Fg/edit?usp=sharing)
 
 ## 開発環境
 - OS：Linux(CentOS)
